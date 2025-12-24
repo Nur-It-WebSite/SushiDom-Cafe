@@ -228,6 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderMenu();
     updateCartUI();
     initEventListeners();
+    initHeaderScroll();
 });
 
 // ============================================
@@ -1021,6 +1022,61 @@ function updateSlider() {
     dots.forEach((dot, index) => {
         dot.classList.toggle('active', index === currentSliderIndex);
     });
+}
+
+// ============================================
+// Экспорт функций для использования в HTML
+// ============================================
+
+// ============================================
+// Управление шапкой при скролле
+// ============================================
+
+/**
+ * Инициализирует логику скрытия/показа шапки при скролле
+ */
+function initHeaderScroll() {
+    const header = document.querySelector('.header');
+    if (!header) return;
+
+    let lastScrollTop = 0;
+    let scrollThreshold = 100; // Минимальное расстояние скролла для срабатывания
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                // Если прокрутили меньше порога, не меняем состояние
+                if (Math.abs(currentScrollTop - lastScrollTop) < 10) {
+                    ticking = false;
+                    return;
+                }
+
+                // В самом верху страницы всегда показываем шапку
+                if (currentScrollTop < 50) {
+                    header.classList.remove('hidden');
+                    header.classList.add('visible');
+                }
+                // При скролле вниз - скрываем
+                else if (currentScrollTop > lastScrollTop && currentScrollTop > scrollThreshold) {
+                    header.classList.add('hidden');
+                    header.classList.remove('visible');
+                }
+                // При скролле вверх - показываем
+                else if (currentScrollTop < lastScrollTop) {
+                    header.classList.remove('hidden');
+                    header.classList.add('visible');
+                }
+
+                lastScrollTop = currentScrollTop;
+                ticking = false;
+            });
+
+            ticking = true;
+        }
+    }, { passive: true });
 }
 
 // ============================================
