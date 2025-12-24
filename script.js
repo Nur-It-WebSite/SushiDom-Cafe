@@ -247,19 +247,21 @@ let currentTheme = localStorage.getItem('theme') || 'light';
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let currentCategory = 'all'; // Текущая выбранная категория
 let currentSliderIndex = 0; // Индекс текущего фото в слайдере
+// Endpoint для общих отзывов (Apps Script Web App URL)
+const REVIEWS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwNn-8xAo3Zvw8mqdf_K44ddLfSMZNqhORjQJfqwJinW5k8XMLbxUiS88bgssSd1Ig8/exec';
 
 // ============================================
 // Инициализация приложения
 // ============================================
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     initTheme();
     initLanguage();
     renderMenu();
     updateCartUI();
     initEventListeners();
     initHeaderScroll();
-    initReviews();
+    await initReviews();
     animateWelcome();
     // Lightbox init
     const closeLb = document.getElementById('closeLightbox');
@@ -1419,7 +1421,10 @@ let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
 /**
  * Инициализация системы отзывов
  */
-function initReviews() {
+async function initReviews() {
+    // Попробуем получить отзывы с сервера (если настроен)
+    await fetchReviewsFromServer();
+
     // Инициализация рейтинга звездами
     initStarRating();
 
@@ -1620,6 +1625,20 @@ function saveReview(name, rating, comment, photoData) {
     alert(currentLang === 'ru'
         ? 'Спасибо за ваш отзыв!'
         : 'Пикириңиз үчүн рахмат!');
+
+    // Попробуем отправить на сервер в фоне (если настроен)
+    postReviewToServer(review).then(saved => {
+        if (saved && typeof saved === 'object') {
+            // если сервер вернул обновлённый объект, обновим локальный кэш
+            const idx = reviews.findIndex(r => r.timestamp === review.timestamp);
+            if (idx !== -1) {
+                reviews[idx] = saved;
+                localStorage.setItem('reviews', JSON.stringify(reviews));
+            }
+        } else {
+            console.warn('Review stored locally but not synced to server.');
+        }
+    });
 }
 
 /**
@@ -1688,6 +1707,40 @@ function createReviewCard(review) {
  */
 function getAllReviews() {
     return reviews.sort((a, b) => b.timestamp - a.timestamp); // Сортировка по дате (новые сначала)
+}
+
+// Попытка получить отзывы с сервера (если настроен)
+async function fetchReviewsFromServer() {
+    if (!REVIEWS_ENDPOINT) return; // не настроен
+    try {
+        const res = await fetch(REVIEWS_ENDPOINT, { method: 'GET', headers: { 'Accept': 'application/json' } });
+        if (!res.ok) throw new Error('Network response was not ok');
+        const data = await res.json();
+        if (Array.isArray(data)) {
+            reviews = data.sort((a, b) => b.timestamp - a.timestamp);
+            localStorage.setItem('reviews', JSON.stringify(reviews));
+        }
+    } catch (err) {
+        console.warn('Could not fetch reviews from server:', err);
+    }
+}
+
+// Отправка отзыва на сервер (если настроен). Возвращает сохранённый объект или false.
+async function postReviewToServer(review) {
+    if (!REVIEWS_ENDPOINT) return false;
+    try {
+        const res = await fetch(REVIEWS_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(review)
+        });
+        if (!res.ok) throw new Error('Network response was not ok');
+        const saved = await res.json();
+        return saved;
+    } catch (err) {
+        console.warn('Failed to post review to server:', err);
+        return false;
+    }
 }
 
 // ============================================
