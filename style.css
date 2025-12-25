@@ -14,6 +14,7 @@
   --border: #e8ddd0;
   --shadow: rgba(61, 40, 23, 0.1);
   --shadow-hover: rgba(61, 40, 23, 0.15);
+  --on-accent: #3d2817; /* цвет текста поверх акцента (светлая тема) */
 }
 
 [data-theme="dark"] {
@@ -28,6 +29,7 @@
   --border: #4a3a2a;
   --shadow: rgba(0, 0, 0, 0.3);
   --shadow-hover: rgba(0, 0, 0, 0.4);
+  --on-accent: #fff; /* цвет текста поверх акцента (тёмная тема) */
 }
 
 * {
@@ -1036,6 +1038,73 @@ section {
   transition: all 0.3s ease;
   font-size: 1rem;
 }
+.payment-options {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+.payment-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  cursor: pointer;
+  user-select: none;
+}
+.payment-option input[type="radio"] {
+  margin-right: 0.25rem;
+}
+.payment-icon {
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+}
+.payment-option img.payment-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+.payment-label {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .payment-option {
+    padding: 0.7rem 1rem;
+  }
+  .payment-icon { width: 30px; height: 30px; }
+  .btn { padding: 1rem; font-size: 1.05rem; }
+}
+
+/* Selected payment option */
+.payment-option.selected {
+  background: linear-gradient(90deg, var(--accent-hover), rgba(150,110,70,1));
+  color: var(--on-accent);
+  border-color: rgba(0,0,0,0.06);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+.payment-option.selected .payment-label {
+  color: var(--on-accent);
+}
+.payment-option.selected .payment-icon {
+  filter: none;
+}
+
+/* Make payment options more prominent on desktop */
+@media (min-width: 769px) {
+  .payment-options { gap: 1rem; }
+  .payment-option { padding: 0.9rem 1.1rem; border-radius: 12px; }
+}
 
 .btn-primary {
   background: var(--accent);
@@ -1046,6 +1115,27 @@ section {
   background: var(--accent-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px var(--shadow);
+}
+
+/* Disabled submit look */
+.btn[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Ready/active submit glow */
+.btn-primary.ready {
+  box-shadow: 0 8px 28px rgba(201,168,130,0.28), 0 2px 6px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+  animation: pulse 2.2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 6px 20px rgba(201,168,130,0.12); }
+  50% { box-shadow: 0 10px 30px rgba(201,168,130,0.18); }
+  100% { box-shadow: 0 6px 20px rgba(201,168,130,0.12); }
 }
 
 .btn-secondary {

@@ -254,10 +254,19 @@ translations.kg['order_error'] = '❌ Ката кетти: {msg}. Сураныч
 // CTA / header small keys
 translations.ru['view-menu'] = 'Посмотреть меню';
 translations.kg['view-menu'] = 'Менюну караңыз';
+// Payment translations
+translations.ru['payment-method-label'] = 'Способ оплаты';
+translations.kg['payment-method-label'] = 'Төлөө ыкмасы';
+translations.ru['payment-cash'] = 'Наличными';
+translations.kg['payment-cash'] = 'Накта';
+translations.ru['payment-card'] = 'Картой';
+translations.kg['payment-card'] = 'Карта менен';
+translations.ru['payment-mbank'] = 'MBank';
+translations.kg['payment-mbank'] = 'MBank';
 
 // ============================================
 // Константы для заказов
-// ============================================
+// ============================================яяяяяяяяяяяяяяяя
 
 // Номер телефона кафе для WhatsApp (без + и пробелов)
 const CAFE_PHONE_NUMBER = '996998252023';
@@ -297,7 +306,89 @@ document.addEventListener('DOMContentLoaded', async () => {
     const lb = document.getElementById('imageLightbox');
     if (closeLb) closeLb.addEventListener('click', closeImageLightbox);
     if (lb) lb.addEventListener('click', (e) => { if (e.target === lb) closeImageLightbox(); });
+    // Init payment option visual state
+    initPaymentOptions();
+    // Init order form validation listeners
+    initOrderFormValidation();
 });
+
+// Set selected class on payment option labels for clear visual state
+function initPaymentOptions() {
+    const options = document.querySelectorAll('.payment-option');
+    if (!options || options.length === 0) return;
+
+    function refresh() {
+        options.forEach(opt => opt.classList.remove('selected'));
+        const checked = document.querySelector('input[name="paymentMethod"]:checked');
+        if (checked && checked.closest('.payment-option')) {
+            checked.closest('.payment-option').classList.add('selected');
+        } else if (checked) {
+            // if input not wrapped by .payment-option, try to find label
+            const lbl = document.querySelector(`label[for="${checked.id}"]`);
+            if (lbl) lbl.classList.add('selected');
+        }
+    }
+
+    // initial state
+    refresh();
+
+    // listen for changes
+    const radios = document.querySelectorAll('input[name="paymentMethod"]');
+    radios.forEach(r => r.addEventListener('change', refresh));
+    // Also support click on label to toggle
+    options.forEach(opt => opt.addEventListener('click', () => {
+        const inp = opt.querySelector('input[name="paymentMethod"]');
+        if (inp) {
+            inp.checked = true;
+            inp.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+    }));
+}
+
+// Проверка валидности формы заказа и активация кнопки отправки
+function validateOrderForm() {
+    const submitBtn = document.getElementById('submitOrderBtn');
+    if (!submitBtn) return;
+
+    const name = document.getElementById('customerName');
+    const phone = document.getElementById('customerPhone');
+    const cartNotEmpty = cart && cart.length > 0;
+
+    const payment = document.querySelector('input[name="paymentMethod"]:checked');
+
+    // Простой валидатор телефона (та же логика что и в placeOrder)
+    const phoneVal = phone ? phone.value.trim().replace(/[\s-]/g, '') : '';
+    const phoneRegex = /^(\+?996|0)?[0-9]{9}$/;
+
+    const nameOk = name && name.value.trim().length > 0;
+    const phoneOk = phone && phoneVal.length > 0 && phoneRegex.test(phoneVal);
+    const paymentOk = !!payment;
+
+    const formReady = cartNotEmpty && nameOk && phoneOk && paymentOk;
+
+    if (formReady) {
+        submitBtn.disabled = false;
+        submitBtn.classList.add('ready');
+    } else {
+        submitBtn.disabled = true;
+        submitBtn.classList.remove('ready');
+    }
+}
+
+// Подключаем слушатели на инпуты формы, чтобы валидировать в реальном времени
+function initOrderFormValidation() {
+    const name = document.getElementById('customerName');
+    const phone = document.getElementById('customerPhone');
+    const radios = document.querySelectorAll('input[name="paymentMethod"]');
+
+    if (name) name.addEventListener('input', validateOrderForm);
+    if (phone) phone.addEventListener('input', validateOrderForm);
+    radios.forEach(r => r.addEventListener('change', validateOrderForm));
+
+    // ensure validation runs when cart changes
+    // updateCartUI() will call validateOrderForm at the end
+    validateOrderForm();
+}
 
 function openImageLightbox(src, alt) {
     const lb = document.getElementById('imageLightbox');
@@ -826,6 +917,8 @@ function updateCartUI() {
 
         totalPrice.textContent = `${total} ${translations[currentLang]['currency']}`;
     }
+    // Обновляем валидацию формы заказа (кнопка Отправить зависит от корзины)
+    try { validateOrderForm(); } catch (e) { /* ignore */ }
 }
 
 // ============================================
@@ -879,7 +972,7 @@ function showOrderForm() {
  * @param {string} comment - Комментарий к заказу
  * @returns {string} Отформатированный текст заказа
  */
-function createOrderText(name, phone, comment) {
+function createOrderText(name, phone, comment, paymentMethod) {
     // Проверка на пустую корзину
     if (cart.length === 0) {
         throw new Error(currentLang === 'ru' ? 'Корзина пуста' : 'Себет бош');
@@ -906,6 +999,16 @@ function createOrderText(name, phone, comment) {
     // Информация о клиенте
     const customerInfo = `👤 ${currentLang === 'ru' ? 'Клиент' : 'Клиент'}: ${name}\n📞 ${currentLang === 'ru' ? 'Телефон' : 'Телефон'}: ${phone}`;
 
+    // Способ оплаты
+    let paymentText = '';
+    if (paymentMethod) {
+        let pmLabel = paymentMethod === 'cash' ? (translations[currentLang]['payment-cash'] || (currentLang === 'ru' ? 'Наличными' : 'Накта'))
+            : paymentMethod === 'card' ? (translations[currentLang]['payment-card'] || (currentLang === 'ru' ? 'Картой' : 'Карта менен'))
+            : paymentMethod === 'mbank' ? (translations[currentLang]['payment-mbank'] || 'MBank')
+            : paymentMethod;
+        paymentText = `\n💳 ${currentLang === 'ru' ? 'Способ оплаты' : 'Төлөө ыкмасы'}: ${pmLabel}`;
+    }
+
     // Комментарий (если есть)
     let commentText = '';
     if (comment && comment.trim()) {
@@ -913,7 +1016,7 @@ function createOrderText(name, phone, comment) {
     }
 
     // Собираем полный текст заказа
-    return header + itemsText + totalText + customerInfo + commentText;
+    return header + itemsText + totalText + customerInfo + paymentText + commentText;
 }
 
 /**
@@ -935,7 +1038,7 @@ function sendToWhatsApp(orderText) {
  * @param {string} comment - Комментарий к заказу
  * @returns {Promise} Промис с результатом отправки
  */
-async function sendToExcel(name, phone, comment) {
+async function sendToExcel(name, phone, comment, paymentMethod) {
     // Проверяем, настроен ли URL Google Sheets
     if (GOOGLE_SHEETS_URL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE') {
         console.log('Google Sheets не настроен. Пропускаем отправку.');
@@ -962,7 +1065,8 @@ async function sendToExcel(name, phone, comment) {
         total: total,
         customerName: name,
         customerPhone: phone,
-        comment: comment || ''
+        comment: comment || '',
+        paymentMethod: paymentMethod || ''
     };
 
     try {
@@ -1039,17 +1143,19 @@ async function placeOrder(e) {
     }
 
     try {
+        // Читаем выбранный способ оплаты
+        const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked') ? document.querySelector('input[name="paymentMethod"]:checked').value : 'cash';
+
         // Формируем текст заказа
-        const orderText = createOrderText(name, phone, comment);
+        const orderText = createOrderText(name, phone, comment, paymentMethod);
 
         // Параллельно отправляем в WhatsApp и Google Sheets
-        // WhatsApp открывается сразу, Google Sheets отправляется в фоне
+        // Открываем WhatsApp для отправки сообщения клиентом
         sendToWhatsApp(orderText);
 
-        // Отправляем в Google Sheets (не блокируем процесс)
-        sendToExcel(name, phone, comment).catch(error => {
+        // Отправляем в Google Sheets в фоне (не блокируем процесс)
+        sendToExcel(name, phone, comment, paymentMethod).catch(error => {
             console.error('Ошибка при отправке в Google Sheets:', error);
-            // Не показываем ошибку пользователю, так как WhatsApp уже открыт
         });
 
         // Очищаем корзину и localStorage
