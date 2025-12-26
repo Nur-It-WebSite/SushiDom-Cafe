@@ -284,6 +284,11 @@
                 >Пример: +996 998 252 023 или 0998252023</small
               >
             </div>
+            <!-- Поле адреса для доставки (показывается только при выборе доставки) -->
+            <div class="form-group delivery-address-group" id="deliveryAddressGroup" style="display: none;">
+              <label for="deliveryAddress" data-i18n="order-address">Адрес доставки</label>
+              <input type="text" id="deliveryAddress" name="address" placeholder="ул. Боконбаева, дом 5" />
+            </div>
             <div class="form-group">
               <label for="orderComment" data-i18n="order-comment"
                 >Комментарий к заказу (необязательно)</label
@@ -409,6 +414,80 @@
       <div class="lightbox-content">
         <button class="lightbox-close" id="closeLightbox">×</button>
         <img src="" alt="" id="lightboxImage" />
+      </div>
+    </div>
+
+    <!-- Модальное окно выбора типа заказа -->
+    <div class="modal-overlay active" id="orderTypeModal">
+      <div class="modal-content order-type-modal">
+        <div class="modal-header">
+          <h2 data-i18n="order-type-title">Как вы хотите заказать?</h2>
+        </div>
+        <div class="modal-body">
+          <div class="order-type-buttons">
+            <button class="order-type-btn" id="orderTypeCafe" data-type="cafe">
+              <span class="order-type-icon">🍽️</span>
+              <span class="order-type-label" data-i18n="order-type-cafe">Я в кафе</span>
+            </button>
+            <button class="order-type-btn" id="orderTypePickup" data-type="pickup">
+              <span class="order-type-icon">🥡</span>
+              <span class="order-type-label" data-i18n="order-type-pickup">Самовывоз</span>
+            </button>
+            <button class="order-type-btn" id="orderTypeDelivery" data-type="delivery">
+              <span class="order-type-icon">🚗</span>
+              <span class="order-type-label" data-i18n="order-type-delivery">Доставка</span>
+            </button>
+            <button class="order-type-btn order-type-browse" id="orderTypeBrowse" data-type="browse">
+              <span class="order-type-icon">👀</span>
+              <span class="order-type-label" data-i18n="order-type-browse">Просто посмотреть меню</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Модальное окно выбора стола -->
+    <div class="modal-overlay" id="tableSelectModal">
+      <div class="modal-content table-select-modal">
+        <div class="modal-header">
+          <h2 data-i18n="table-select-title">Выберите номер стола</h2>
+          <button class="modal-close" id="closeTableModal" aria-label="Закрыть">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="table-grid" id="tableGrid">
+            <!-- Столы 1-11 будут добавлены через JavaScript -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Модальное окно для данных доставки -->
+    <div class="modal-overlay" id="deliveryFormModal">
+      <div class="modal-content delivery-form-modal">
+        <div class="modal-header">
+          <h2 data-i18n="delivery-form-title">Данные для доставки</h2>
+          <button class="modal-close" id="closeDeliveryModal" aria-label="Закрыть">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="deliveryInfoForm" class="delivery-info-form">
+            <div class="form-group">
+              <label for="deliveryName" data-i18n="order-name">Ваше имя</label>
+              <input type="text" id="deliveryName" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="deliveryPhone" data-i18n="order-phone">Телефон</label>
+              <input type="tel" id="deliveryPhone" name="phone" placeholder="+996 998 252 023" required />
+            </div>
+            <div class="form-group">
+              <label for="deliveryAddressInput" data-i18n="order-address">Адрес доставки</label>
+              <input type="text" id="deliveryAddressInput" name="address" placeholder="ул. Боконбаева, дом 5" required />
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn btn-secondary" id="backToOrderType" data-i18n="back">Назад</button>
+              <button type="submit" class="btn btn-primary" data-i18n="continue">Продолжить</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
 

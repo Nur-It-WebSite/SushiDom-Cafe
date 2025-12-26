@@ -264,9 +264,31 @@ translations.kg['payment-card'] = 'Карта менен';
 translations.ru['payment-mbank'] = 'MBank';
 translations.kg['payment-mbank'] = 'MBank';
 
+// Переводы для выбора типа заказа
+translations.ru['order-type-title'] = 'Как вы хотите заказать?';
+translations.kg['order-type-title'] = 'Кантип заказ бересиз?';
+translations.ru['order-type-cafe'] = 'Я в кафе';
+translations.kg['order-type-cafe'] = 'Мен кафедемин';
+translations.ru['order-type-pickup'] = 'Самовывоз';
+translations.kg['order-type-pickup'] = 'Өзүм алам';
+translations.ru['order-type-delivery'] = 'Доставка';
+translations.kg['order-type-delivery'] = 'Жеткирүү';
+translations.ru['order-type-browse'] = 'Просто посмотреть меню';
+translations.kg['order-type-browse'] = 'Менюну гана көрүү';
+translations.ru['table-select-title'] = 'Выберите номер стола';
+translations.kg['table-select-title'] = 'Стол номурун тандаңыз';
+translations.ru['order-address'] = 'Адрес доставки';
+translations.kg['order-address'] = 'Жеткирүү дареги';
+translations.ru['delivery-form-title'] = 'Данные для доставки';
+translations.kg['delivery-form-title'] = 'Жеткирүү үчүн маалыматтар';
+translations.ru['back'] = 'Назад';
+translations.kg['back'] = 'Артка';
+translations.ru['continue'] = 'Продолжить';
+translations.kg['continue'] = 'Улантуу';
+
 // ============================================
 // Константы для заказов
-// ============================================яяяяяяяяяяяяяяяя
+// ============================================
 
 // Номер телефона кафе для WhatsApp (без + и пробелов)
 const CAFE_PHONE_NUMBER = '996998252023';
@@ -285,6 +307,11 @@ let currentTheme = localStorage.getItem('theme') || 'light';
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let currentCategory = 'all'; // Текущая выбранная категория
 let currentSliderIndex = 0; // Индекс текущего фото в слайдере
+
+// Тип заказа: 'cafe', 'pickup', 'delivery', 'browse'
+let orderType = null;
+let tableNumber = null;
+let deliveryInfo = null;
 // Endpoint для общих отзывов (Apps Script Web App URL)
 const REVIEWS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyYVg9L5UtQISuiSDvzxcleVKqN4mLN4b3to64DRukMGMN6kTCnYhX3F5BfSSwA85hUWg/exec';
 
@@ -310,6 +337,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     initPaymentOptions();
     // Init order form validation listeners
     initOrderFormValidation();
+    // Init order type modal
+    initOrderTypeModal();
 });
 
 // Set selected class on payment option labels for clear visual state
@@ -388,6 +417,163 @@ function initOrderFormValidation() {
     // ensure validation runs when cart changes
     // updateCartUI() will call validateOrderForm at the end
     validateOrderForm();
+}
+
+// ============================================
+// Модальное окно выбора типа заказа
+// ============================================
+
+function initOrderTypeModal() {
+    const modal = document.getElementById('orderTypeModal');
+    const tableModal = document.getElementById('tableSelectModal');
+    const deliveryModal = document.getElementById('deliveryFormModal');
+    const tableGrid = document.getElementById('tableGrid');
+    
+
+    
+    // Генерируем кнопки столов 1-11
+    if (tableGrid) {
+        tableGrid.innerHTML = '';
+        for (let i = 1; i <= 11; i++) {
+            const btn = document.createElement('button');
+            btn.className = 'table-btn';
+            btn.textContent = i;
+            btn.dataset.table = i;
+            btn.addEventListener('click', () => selectTable(i));
+            tableGrid.appendChild(btn);
+        }
+    }
+    
+    // Обработчики кнопок типа заказа
+    const cafeBtn = document.getElementById('orderTypeCafe');
+    const pickupBtn = document.getElementById('orderTypePickup');
+    const deliveryBtn = document.getElementById('orderTypeDelivery');
+    const browseBtn = document.getElementById('orderTypeBrowse');
+    const closeTableBtn = document.getElementById('closeTableModal');
+    const closeDeliveryBtn = document.getElementById('closeDeliveryModal');
+    const backToOrderTypeBtn = document.getElementById('backToOrderType');
+    const deliveryForm = document.getElementById('deliveryInfoForm');
+    
+    if (cafeBtn) cafeBtn.addEventListener('click', () => showTableSelect());
+    if (pickupBtn) pickupBtn.addEventListener('click', () => setOrderType('pickup'));
+    if (deliveryBtn) deliveryBtn.addEventListener('click', () => showDeliveryForm());
+    if (browseBtn) browseBtn.addEventListener('click', () => setOrderType('browse'));
+    
+    if (closeTableBtn) closeTableBtn.addEventListener('click', () => {
+        tableModal.classList.remove('active');
+        modal.classList.add('active');
+    });
+    
+    if (closeDeliveryBtn) closeDeliveryBtn.addEventListener('click', () => {
+        deliveryModal.classList.remove('active');
+        modal.classList.add('active');
+    });
+    
+    if (backToOrderTypeBtn) backToOrderTypeBtn.addEventListener('click', () => {
+        deliveryModal.classList.remove('active');
+        modal.classList.add('active');
+    });
+    
+    // Обработка формы доставки
+    if (deliveryForm) {
+        deliveryForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('deliveryName').value.trim();
+            const phone = document.getElementById('deliveryPhone').value.trim();
+            const address = document.getElementById('deliveryAddressInput').value.trim();
+            
+            if (name && phone && address) {
+                deliveryInfo = { name, phone, address };
+                setOrderType('delivery');
+                deliveryModal.classList.remove('active');
+            }
+        });
+    }
+    
+    // Закрытие по клику вне модального окна стола
+    if (tableModal) {
+        tableModal.addEventListener('click', (e) => {
+            if (e.target === tableModal) {
+                tableModal.classList.remove('active');
+                modal.classList.add('active');
+            }
+        });
+    }
+    
+    // Закрытие по клику вне модального окна доставки
+    if (deliveryModal) {
+        deliveryModal.addEventListener('click', (e) => {
+            if (e.target === deliveryModal) {
+                deliveryModal.classList.remove('active');
+                modal.classList.add('active');
+            }
+        });
+    }
+}
+
+function showTableSelect() {
+    const modal = document.getElementById('orderTypeModal');
+    const tableModal = document.getElementById('tableSelectModal');
+    if (modal) modal.classList.remove('active');
+    if (tableModal) tableModal.classList.add('active');
+}
+
+function showDeliveryForm() {
+    const modal = document.getElementById('orderTypeModal');
+    const deliveryModal = document.getElementById('deliveryFormModal');
+    if (modal) modal.classList.remove('active');
+    if (deliveryModal) deliveryModal.classList.add('active');
+}
+
+function selectTable(num) {
+    tableNumber = num;
+    setOrderType('cafe');
+    const tableModal = document.getElementById('tableSelectModal');
+    if (tableModal) tableModal.classList.remove('active');
+}
+
+function setOrderType(type) {
+    orderType = type;
+    
+    const modal = document.getElementById('orderTypeModal');
+    const tableModal = document.getElementById('tableSelectModal');
+    if (modal) modal.classList.remove('active');
+    if (tableModal) tableModal.classList.remove('active');
+    
+    applyOrderTypeMode();
+}
+
+function applyOrderTypeMode() {
+    // Если выбран режим просмотра, добавляем класс browse-mode
+    if (orderType === 'browse') {
+        document.body.classList.add('browse-mode');
+    } else {
+        document.body.classList.remove('browse-mode');
+    }
+}
+
+function getOrderTypeText() {
+    if (!orderType || orderType === 'browse') return '';
+    
+    if (orderType === 'cafe' && tableNumber) {
+        return currentLang === 'ru' 
+            ? `📍 Стол №${tableNumber}` 
+            : `📍 Стол №${tableNumber}`;
+    } else if (orderType === 'pickup') {
+        return currentLang === 'ru' ? '📍 Самовывоз' : '📍 Өзү алып кетүү';
+    } else if (orderType === 'delivery' && deliveryInfo) {
+        return currentLang === 'ru' 
+            ? `📍 Доставка: ${deliveryInfo.address}` 
+            : `📍 Жеткирүү: ${deliveryInfo.address}`;
+    }
+    return '';
+}
+
+function updateDeliveryAddressVisibility() {
+    const addressGroup = document.getElementById('deliveryAddressGroup');
+    if (addressGroup) {
+        addressGroup.style.display = orderType === 'delivery' ? 'block' : 'none';
+    }
 }
 
 function openImageLightbox(src, alt) {
@@ -913,6 +1099,14 @@ function showOrderForm() {
 
     // Очищаем форму
     orderForm.reset();
+    
+    // Если есть данные доставки, заполняем форму
+    if (orderType === 'delivery' && deliveryInfo) {
+        const nameInput = document.getElementById('customerName');
+        const phoneInput = document.getElementById('customerPhone');
+        if (nameInput) nameInput.value = deliveryInfo.name;
+        if (phoneInput) phoneInput.value = deliveryInfo.phone;
+    }
 
     // Формируем сводку заказа
     let summaryHTML = '';
@@ -937,6 +1131,10 @@ function showOrderForm() {
     `;
 
     orderSummary.innerHTML = summaryHTML;
+    
+    // Показываем/скрываем поле адреса в зависимости от типа заказа
+    updateDeliveryAddressVisibility();
+    
     orderModal.classList.add('active');
 }
 
@@ -994,8 +1192,12 @@ function createOrderText(name, phone, comment, paymentMethod) {
         commentText = `\n📝 ${currentLang === 'ru' ? 'Комментарий' : 'Комментарий'}: ${comment}`;
     }
 
+    // Тип заказа (стол/самовывоз/доставка)
+    const orderTypeInfo = getOrderTypeText();
+    const orderTypeText = orderTypeInfo ? `\n${orderTypeInfo}` : '';
+
     // Собираем полный текст заказа
-    return header + itemsText + totalText + customerInfo + paymentText + commentText;
+    return header + itemsText + totalText + customerInfo + paymentText + orderTypeText + commentText;
 }
 
 /**
