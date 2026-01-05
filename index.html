@@ -13,27 +13,25 @@
     />
   </head>
   <body>
-    <!-- Шапка сайта -->
     <header class="header">
       <div class="container">
         <div class="header-content">
           <div class="logo">Cholpon</div>
           <button
             class="mobile-menu-btn"
-            id="mobileMenuBtn"
+            id="mobileMenuBtn"    
             aria-label="Открыть меню"
           >
             ☰
           </button>
-          <nav class="nav" id="mainNav">
+          <nav class="nav" id="mainNav">  
             <a href="#menu" data-i18n="nav-menu">Меню</a>
-            <a href="#about" data-i18n="nav-about">О нас</a>
             <a href="#contact" data-i18n="nav-contact">Контакты</a>
           </nav>
           <div class="header-controls">
             <button
               class="lang-toggle"
-              id="langToggle"
+              id="langToggle"   
               aria-label="Переключить язык"
             >
               RU
@@ -332,6 +330,11 @@
                   ></label
                 >
               </div>
+              <!-- Контейнер для показа QR при выборе MBank (по умолчанию скрыт) -->
+              <div id="mbankQrContainer" style="display:none; margin-top:0.75rem; text-align:center;">
+                <img id="mbankQrImage" src="./qr/photo_5366081055741381388_x.svg" alt="MBank QR" style="max-width:200px; width:60%; height:auto; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.12);">
+                <div style="font-size:0.9rem; color:var(--text-secondary); margin-top:0.4rem;">Отсканируйте QR для оплаты в MBank</div>
+              </div>
             </div>
             <div class="form-actions">
               <button
@@ -384,7 +387,6 @@
             </button>
             <div class="slider-dots" id="sliderDots"></div>
           </div>
-
           <!-- Информация о блюде -->
           <div class="dish-details-info">
             <h3 id="dishDetailsName"></h3>

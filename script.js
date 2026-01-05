@@ -412,6 +412,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     initEventListeners();
     initHeaderScroll();
     await initReviews();
+    // Восстанавливаем данные доставки, если они были введены ранее
+    try {
+        const savedDelivery = localStorage.getItem('deliveryInfo');
+        if (savedDelivery) deliveryInfo = JSON.parse(savedDelivery);
+    } catch (err) {
+        deliveryInfo = null;
+    }
     animateWelcome();
     // Lightbox init
     const closeLb = document.getElementById('closeLightbox');
@@ -448,15 +455,51 @@ function initPaymentOptions() {
 
     // listen for changes
     const radios = document.querySelectorAll('input[name="paymentMethod"]');
-    radios.forEach(r => r.addEventListener('change', refresh));
+    radios.forEach(r => r.addEventListener('change', (ev) => { refresh(); toggleMbankQr(ev.target.value); }));
     // Also support click on label to toggle
     options.forEach(opt => opt.addEventListener('click', () => {
         const inp = opt.querySelector('input[name="paymentMethod"]');
         if (inp) {
             inp.checked = true;
             inp.dispatchEvent(new Event('change', { bubbles: true }));
+            // Обновляем показ QR при клике по варианту
+            toggleMbankQr(inp.value);
         }
     }));
+
+    // Инициализируем видимость QR по текущему выбранному способу
+    const checked = document.querySelector('input[name="paymentMethod"]:checked');
+    toggleMbankQr(checked ? checked.value : null);
+}
+
+// Показывает/скрывает QR-контейнер MBank
+function toggleMbankQr(selectedValue) {
+    const container = document.getElementById('mbankQrContainer');
+    if (!container) return;
+    if (selectedValue === 'mbank') {
+        container.style.display = 'block';
+    } else {
+        container.style.display = 'none';
+    }
+}
+
+// Скрывает опцию оплаты картой при доставке, иначе показывает все опции
+function adjustPaymentOptionsForDelivery() {
+    const cardInput = document.querySelector('input[name="paymentMethod"][value="card"]');
+    const cardLabel = cardInput ? cardInput.closest('.payment-option') : null;
+    if (orderType === 'delivery') {
+        if (cardLabel) cardLabel.style.display = 'none';
+        const checked = document.querySelector('input[name="paymentMethod"]:checked');
+        if (checked && checked.value === 'card') {
+            const cash = document.querySelector('input[name="paymentMethod"][value="cash"]');
+            if (cash) {
+                cash.checked = true;
+                cash.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        }
+    } else {
+        if (cardLabel) cardLabel.style.display = '';
+    }
 }
 
 // Проверка валидности формы заказа и активация кнопки отправки
@@ -648,6 +691,9 @@ function initOrderTypeModal() {
             
             if (name && phone && address) {
                 deliveryInfo = { name, phone, address };
+                // Сохраняем временно введённые данные доставки, чтобы они были доступны
+                // при переходе к форме оформления заказа
+                try { localStorage.setItem('deliveryInfo', JSON.stringify(deliveryInfo)); } catch (e) {}
                 setOrderType('delivery');
                 deliveryModal.classList.remove('active');
             }
@@ -673,6 +719,25 @@ function initOrderTypeModal() {
             }
         });
     }
+
+    // Если модальное окно выбора типа заказа по умолчанию активно, включаем блокировку
+    if (modal && modal.classList.contains('active')) {
+        enableModalLock();
+    }
+}
+
+// Блокировка фоновых взаимодействий при открытом обязательном модальном окне
+function enableModalLock() {
+    document.body.classList.add('modal-blocked');
+    // Отключаем прокрутку фона
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+}
+
+function disableModalLock() {
+    document.body.classList.remove('modal-blocked');
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
 }
 
 function showTableSelect() {
@@ -680,6 +745,8 @@ function showTableSelect() {
     const tableModal = document.getElementById('tableSelectModal');
     if (modal) modal.classList.remove('active');
     if (tableModal) tableModal.classList.add('active');
+    // при переходе к выбору стола фон всё ещё должен быть недоступен
+    enableModalLock();
 }
 
 function showDeliveryForm() {
@@ -687,6 +754,8 @@ function showDeliveryForm() {
     const deliveryModal = document.getElementById('deliveryFormModal');
     if (modal) modal.classList.remove('active');
     if (deliveryModal) deliveryModal.classList.add('active');
+    // при показе формы доставки блокируем фон
+    enableModalLock();
 }
 
 function selectTable(num) {
@@ -705,6 +774,8 @@ function setOrderType(type) {
     if (tableModal) tableModal.classList.remove('active');
     
     applyOrderTypeMode();
+    // После выбора снимаем блокировку и разрешаем взаимодействие с сайтом
+    disableModalLock();
 }
 
 function applyOrderTypeMode() {
@@ -714,6 +785,9 @@ function applyOrderTypeMode() {
     } else {
         document.body.classList.remove('browse-mode');
     }
+    // Обновляем видимость поля адреса и варинтов оплаты при смене типа заказа
+    updateDeliveryAddressVisibility();
+    adjustPaymentOptionsForDelivery();
 }
 
 function getOrderTypeText() {
@@ -919,6 +993,12 @@ function initEventListeners() {
     // Закрытие по клику вне модального окна
     document.querySelectorAll('.modal-overlay').forEach(overlay => {
         overlay.addEventListener('click', (e) => {
+            // Если это модальное окно выбора типа заказа и оно активно,
+            // блокируем закрытие кликом по фону — пользователь должен выбрать.
+            if (overlay.id === 'orderTypeModal' && overlay.classList.contains('active')) {
+                // Игнорируем клик вне модального контента
+                return;
+            }
             if (e.target === overlay) {
                 overlay.classList.remove('active');
             }
@@ -937,6 +1017,14 @@ function initEventListeners() {
             }
         });
     }
+
+    // Предотвращаем закрытие модалов клавишей Escape, когда включена обязательная блокировка
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && document.body.classList.contains('modal-blocked')) {
+            e.stopPropagation();
+            e.preventDefault();
+        }
+    });
 
     // Оформление заказа
     const checkoutBtn = document.getElementById('checkoutBtn');
@@ -1134,7 +1222,6 @@ function createMenuCard(item) {
 // ============================================
 // Работа с корзиной
 // ============================================
-
 function addToCart(itemId) {
     const item = menuData.find(i => i.id === itemId);
     if (!item) return;
@@ -1291,6 +1378,9 @@ function showOrderForm() {
         const phoneInput = document.getElementById('customerPhone');
         if (nameInput) nameInput.value = deliveryInfo.name;
         if (phoneInput) phoneInput.value = deliveryInfo.phone;
+        // Заполняем адрес доставки в форме оформления заказа
+        const addressInput = document.getElementById('deliveryAddress');
+        if (addressInput) addressInput.value = deliveryInfo.address || '';
     }
 
     // Формируем сводку заказа
@@ -1319,6 +1409,10 @@ function showOrderForm() {
     
     // Показываем/скрываем поле адреса в зависимости от типа заказа
     updateDeliveryAddressVisibility();
+    // Обновляем видимость способов оплаты и QR
+    adjustPaymentOptionsForDelivery();
+    const checked = document.querySelector('input[name="paymentMethod"]:checked');
+    toggleMbankQr(checked ? checked.value : null);
     
     orderModal.classList.add('active');
 }
@@ -1408,7 +1502,7 @@ function sendToWhatsApp(orderText) {
  * @param {string} comment - Комментарий к заказу
  * @returns {Promise} Промис с результатом отправки
  */
-async function sendToExcel(name, phone, comment, paymentMethod) {
+async function sendToExcel(name, phone, comment, paymentMethod, address) {
     // Проверяем, настроен ли URL Google Sheets
     if (GOOGLE_SHEETS_URL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE') {
         console.log('Google Sheets не настроен. Пропускаем отправку.');
@@ -1435,7 +1529,8 @@ async function sendToExcel(name, phone, comment, paymentMethod) {
         total: total,
         customerName: name,
         customerPhone: phone,
-        comment: comment || '',
+        // Добавляем адрес доставки в комментарий, если он есть
+        comment: ((comment && comment.trim()) ? comment.trim() + ' | ' : '') + (address || ''),
         paymentMethod: paymentMethod || ''
     };
 
@@ -1517,6 +1612,15 @@ async function placeOrder(e) {
         const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked') ? document.querySelector('input[name="paymentMethod"]:checked').value : 'cash';
 
         // Формируем текст заказа
+        // Если это доставка, синхронизируем адрес из формы в `deliveryInfo`
+        if (orderType === 'delivery') {
+            const addrInput = document.getElementById('deliveryAddress');
+            const addrVal = addrInput ? addrInput.value.trim() : (deliveryInfo ? deliveryInfo.address : '');
+            if (!deliveryInfo) deliveryInfo = {};
+            deliveryInfo.address = addrVal || deliveryInfo.address;
+            try { localStorage.setItem('deliveryInfo', JSON.stringify(deliveryInfo)); } catch (e) {}
+        }
+
         const orderText = createOrderText(name, phone, comment, paymentMethod);
 
         // Параллельно отправляем в WhatsApp и Google Sheets
@@ -1524,7 +1628,8 @@ async function placeOrder(e) {
         sendToWhatsApp(orderText);
 
         // Отправляем в Google Sheets в фоне (не блокируем процесс)
-        sendToExcel(name, phone, comment, paymentMethod).catch(error => {
+        const deliveryAddrForSheet = (orderType === 'delivery' && deliveryInfo && deliveryInfo.address) ? deliveryInfo.address : '';
+        sendToExcel(name, phone, comment, paymentMethod, deliveryAddrForSheet).catch(error => {
             console.error('Ошибка при отправке в Google Sheets:', error);
         });
 
