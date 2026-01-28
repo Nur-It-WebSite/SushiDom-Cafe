@@ -429,10 +429,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     initPaymentOptions();
     // Init order form validation listeners
     initOrderFormValidation();
-    // Init order type modal (модалка будет показана всегда)
+    // Init order type modal (только навешиваем обработчики, не показываем сразу)
     initOrderTypeModal();
-    // Если стол передан через параметр ?table=, сразу выбираем его (но модалка остаётся открытой)
-    initTableFromUrl();
+    // Если стол передан через параметр ?table=, сразу выбираем его.
+    // В этом случае окно "Как вы хотите заказать?" не показываем вообще.
+    const handledByUrl = initTableFromUrl();
+    // Если стол НЕ передан в URL, показываем модалку выбора типа заказа
+    if (!handledByUrl) {
+        const orderTypeModal = document.getElementById('orderTypeModal');
+        if (orderTypeModal) {
+            orderTypeModal.classList.add('active');
+            enableModalLock();
+        }
+    }
 });
 
 // Set selected class on payment option labels for clear visual state
@@ -663,12 +672,12 @@ function initOrderTypeModal() {
     const backToOrderTypeBtn = document.getElementById('backToOrderType');
     const deliveryForm = document.getElementById('deliveryInfoForm');
 
-    // Если в URL уже передан номер стола (?table=...), скрываем кнопку "Я в кафе"
+    // Если в URL НЕТ номера стола (?table=...), скрываем кнопку "Я в кафе"
+    // Это значит, что гость не из зала, а просто зашёл на сайт
     try {
         const params = new URLSearchParams(window.location.search);
         const tableParam = params.get('table');
-        const num = tableParam ? parseInt(tableParam, 10) : NaN;
-        if (cafeBtn && Number.isFinite(num) && num >= 1 && num <= 11) {
+        if (cafeBtn && !tableParam) {
             cafeBtn.style.display = 'none';
         }
     } catch (e) { }
@@ -730,12 +739,6 @@ function initOrderTypeModal() {
                 modal.classList.add('active');
             }
         });
-    }
-
-    // Всегда показываем модалку выбора типа заказа при загрузке
-    if (modal && !modal.classList.contains('active')) {
-        modal.classList.add('active');
-        enableModalLock();
     }
 }
 
