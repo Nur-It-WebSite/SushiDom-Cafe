@@ -429,18 +429,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     initPaymentOptions();
     // Init order form validation listeners
     initOrderFormValidation();
-    // Init order type modal
+    // Init order type modal (модалка будет показана всегда)
     initOrderTypeModal();
-    // Если стол передан через параметр ?table=, сразу выбираем его и не показываем модалку
-    const handledByUrl = initTableFromUrl();
-    // Если стол не передан в URL, показываем модалку выбора типа заказа
-    if (!handledByUrl) {
-        const orderTypeModal = document.getElementById('orderTypeModal');
-        if (orderTypeModal) {
-            orderTypeModal.classList.add('active');
-            enableModalLock();
-        }
-    }
+    // Если стол передан через параметр ?table=, сразу выбираем его (но модалка остаётся открытой)
+    initTableFromUrl();
 });
 
 // Set selected class on payment option labels for clear visual state
@@ -671,6 +663,16 @@ function initOrderTypeModal() {
     const backToOrderTypeBtn = document.getElementById('backToOrderType');
     const deliveryForm = document.getElementById('deliveryInfoForm');
 
+    // Если в URL уже передан номер стола (?table=...), скрываем кнопку "Я в кафе"
+    try {
+        const params = new URLSearchParams(window.location.search);
+        const tableParam = params.get('table');
+        const num = tableParam ? parseInt(tableParam, 10) : NaN;
+        if (cafeBtn && Number.isFinite(num) && num >= 1 && num <= 11) {
+            cafeBtn.style.display = 'none';
+        }
+    } catch (e) { }
+
     if (cafeBtn) cafeBtn.addEventListener('click', () => showTableSelect());
     if (pickupBtn) pickupBtn.addEventListener('click', () => setOrderType('pickup'));
     if (deliveryBtn) deliveryBtn.addEventListener('click', () => showDeliveryForm());
@@ -730,8 +732,9 @@ function initOrderTypeModal() {
         });
     }
 
-    // Если модальное окно выбора типа заказа по умолчанию активно, включаем блокировку
-    if (modal && modal.classList.contains('active')) {
+    // Всегда показываем модалку выбора типа заказа при загрузке
+    if (modal && !modal.classList.contains('active')) {
+        modal.classList.add('active');
         enableModalLock();
     }
 }
@@ -756,16 +759,8 @@ function initTableFromUrl() {
             localStorage.setItem('currentTableNumber', String(num));
         } catch (e) { }
 
-        // Прячем модальные окна выбора типа заказа/стола,
-        // чтобы гость сразу видел меню
-        const orderTypeModal = document.getElementById('orderTypeModal');
-        const tableModal = document.getElementById('tableSelectModal');
-        if (orderTypeModal) orderTypeModal.classList.remove('active');
-        if (tableModal) tableModal.classList.remove('active');
-
-        // Применяем режим заказа и разблокируем фон
+        // Применяем режим заказа (тип "кафе", стол уже выбран)
         applyOrderTypeMode();
-        disableModalLock();
         return true;
     } catch (err) {
         console.error('Failed to init table from URL', err);
