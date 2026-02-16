@@ -1085,7 +1085,7 @@ const CAFE_PHONE_NUMBER = '996998252023';
 // Пример: WAITERS['w1'] = { id: 'w1', name: 'Альмурза', phone: '996700000001', photo: './icons/waiter1.jpg' }
 let WAITERS = {
     'w1': { id: 'w1', name: 'Альмурза', phone: '996700000001', photo: './icons/waiter1.jpg' },
-    'w2': { id: 'w2', name: 'Нурсултан', phone: '996700000002', photo: './icons/waiter2.jpg' },
+    'w2': { id: 'w2', name: 'Назбийке', phone: '996998252023', photo: './icons/waiter2.jpg' },
     'w3': { id: 'w3', name: 'Айзада', phone: '996700000003', photo: './icons/waiter3.jpg' }
 };
 
