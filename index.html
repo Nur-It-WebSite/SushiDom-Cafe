@@ -72,19 +72,15 @@
         </div>
       </div>
     </section>
-
-    <!-- MENU -->
     <section id="menu" class="menu-section">
       <div class="container">
         <h2 data-i18n="menu-title">Биздин <span>аш тизмек</span></h2>
-
         <!-- Category filter -->
         <div class="category-filter">
           <button class="filter-btn active" data-category="all" data-i18n="filter-all">Все</button>
-          <button class="filter-btn" data-category="fastfood" data-i18n="filter-fastfood">Фаст Фуд</button>
-          <button class="filter-btn" data-category="rolls" data-i18n="filter-rolls">Суши жана Роллы</button>
-          <button class="filter-btn" data-category="sets" data-i18n="filter-sets">Сеттер</button>
-          <button class="filter-btn" data-category="wok" data-i18n="filter-wok">WOK (Соба)</button>
+          <button class="filter-btn" data-category="sushi_rolls" data-i18n="filter-sushi-rolls">Суши и Роллы</button>
+          <button class="filter-btn" data-category="fastfood" data-i18n="filter-fastfood">Фастфуд</button>
+          <button class="filter-btn" data-category="bubble_tea" data-i18n="filter-bubble-tea">Бабл Ти</button>
           <button class="filter-btn" data-category="drinks" data-i18n="filter-drinks">Напитки</button>
         </div>
       </div>
@@ -289,6 +285,19 @@
           <button class="lang-btn-modal" id="langBtnRu" data-lang="ru">RU</button>
           <button class="lang-btn-modal" id="langBtnKg" data-lang="kg">KG</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant selection modal -->
+  <div class="modal-overlay" id="variantModal">
+    <div class="modal-content variant-modal">
+      <div class="modal-header">
+        <h2 id="variantTitle">Выберите вариант</h2>
+        <button class="modal-close" id="closeVariantModal" aria-label="Закрыть">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="variantOptions"></div>
       </div>
     </div>
   </div>

@@ -1,1393 +1,1101 @@
 const menuData = [
-    // ==================== ПИЦЦА ====================
+    // ==================== СЕТЫ ====================
     {
         id: 1,
-        name: 'Маргарита',
-        nameKg: 'Маргарита',
-        description: 'Классическая пицца с томатным соусом и моцареллой',
-        descriptionKg: 'Классикалык помидор соусу жана моцарелла менен',
-        price: 450,
-        image: 'https://img.povar.ru/mobile/64/32/c9/b4/picca_margarita-344259.jpg',
-        category: 'pizza',
-        images: [
-            'https://img.povar.ru/mobile/64/32/c9/b4/picca_margarita-344259.jpg',
-            'https://www.koolinar.ru/all_image/recipes/156/156110/recipe_a29c73e2-e7c9-49d0-8baf-1695b91e7b7c_large.jpg'
-        ],
-        ingredients: ['Тесто', 'Томатный соус', 'Моцарелла', 'Помидоры', 'Базилик'],
-        ingredientsKg: ['Камыр', 'Помидор соусу', 'Моцарелла', 'Помидор', 'Базилик']
+        name: 'Сет №1',
+        nameKg: 'Сет №1',
+        description: 'Филадельфия с тамаго, Чиз ролл, Филадельфия с курицей',
+        descriptionKg: 'Тамаго менен Филадельфия, Чиз ролл, Тоок менен Филадельфия',
+        price: 1099,
+        image: './imagemenu/set1.jpg',
+        category: 'sets'
     },
     {
         id: 2,
-        name: 'Пепперони',
-        nameKg: 'Пепперони',
-        description: 'Пикантная пицца с острой колбасой пепперони и сыром',
-        descriptionKg: 'Ачуу пепперони колбасасы жана сыр кошулган пицца',
-        price: 480,
-        image: 'https://s1.eda.ru/StaticContent/Photos/120131085053/171027192707/p_O.jpg',
-        category: 'pizza'
+        name: 'Сет №2',
+        nameKg: 'Сет №2',
+        description: 'Калифорния (лосось, креветка, тамаго, курица)',
+        descriptionKg: 'Калифорния (лосось, креветка, тамаго, тоок)',
+        price: 1199,
+        image: './imagemenu/set2.jpg',
+        category: 'sets'
     },
     {
         id: 3,
-        name: 'Детская',
-        nameKg: 'Балдарга',
-        description: 'Нежная пицца с курицей и сладким перцем',
-        descriptionKg: 'Тоок эти жана таттуу калемпир кошулган назик пицца',
-        price: 480,
-        image: 'https://cdn.fishki.net/upload/post/2021/01/13/3539546/5a131d7ccf27.jpg',
-        category: 'pizza'
+        name: 'Сет №3',
+        nameKg: 'Сет №3',
+        description: 'Филадельфия, Чиз хот с курицей, Мини с лососем, Эби с огурцом',
+        descriptionKg: 'Филадельфия, Тоок менен Чиз хот, Лосось менен Мини, Огурц менен Эби',
+        price: 1299,
+        image: './imagemenu/set3.jpg',
+        category: 'sets'
     },
     {
         id: 4,
-        name: 'Курица с Грибами',
-        nameKg: 'Козу карын менен тоок',
-        description: 'Сочная пицца с куриным филе и шампиньонами',
-        descriptionKg: 'Тоок филеси жана шампиньон кошулган ширелүү пицца',
-        price: 500,
-        image: 'https://s3.smartofood.ru/kato/menu/14cce8bc-fddd-5770-9c57-f35c8172513c.webp',
-        category: 'pizza'
+        name: 'Сет №4',
+        nameKg: 'Сет №4',
+        description: 'Калифорния с креветкой, Хот Чиз с курицей, Яки с тунцом, Япония ролл',
+        descriptionKg: 'Креветка менен Калифорния, Тоок менен Хот Чиз, Тунец менен Яки, Япония ролл',
+        price: 1399,
+        image: './imagemenu/set4.jpg',
+        category: 'sets'
     },
     {
         id: 5,
-        name: 'Фрикасе',
-        nameKg: 'Фрикасе',
-        description: 'Пицца с нежным соусом фрикасе и курицей',
-        descriptionKg: 'Фрикасе соусу жана тоок эти кошулган пицца',
-        price: 520,
-        image: 'https://edimdoma.ru/data/recipes/0014/4040/144040-ed4_wide.jpg',
-        category: 'pizza'
+        name: 'Сет №5',
+        nameKg: 'Сет №5',
+        description: 'Горячий с тунцом, Темпура с курицей, Спайси с лососем, Шарики с курицей и лососем',
+        descriptionKg: 'Тунец менен Горячий, Тоок менен Темпура, Лосось менен Спайси, Тоок жана лосось менен Шарики',
+        price: 1199,
+        image: './imagemenu/set5.jpg',
+        category: 'sets'
     },
     {
         id: 6,
-        name: 'Мясная',
-        nameKg: 'Эттүү',
-        description: 'Сытная пицца с разными видами мяса',
-        descriptionKg: 'Ар кандай эттер кошулган тойумдуу пицца',
-        price: 550,
-        image: 'https://cipollino.ua/content/uploads/images/recept-myasnoj-piccy-pod-syrom%281%29.jpg',
-        category: 'pizza'
-    },
-    {
-        id: 7,
-        name: 'Чили',
-        nameKg: 'Чили',
-        description: 'Острая пицца с перцем чили и пикантными нотками',
-        descriptionKg: 'Чили калемпири жана ачуу даамдары менен пицца',
-        price: 550,
-        image: 'https://lh3.googleusercontent.com/proxy/kyBwClJ3T-f7dLM2fWPPOLSl27CBrM3AuhH52bn2ZxIr97Cz3J3jG1g2-Q5n1l68D6v3Ycgr6Xk7h3aPykN9eZR0xPmxXo32tZ9gJyxQJymy9tZJtZ9gJzZ9gJzZ9g',
-        category: 'pizza'
+        name: 'Сет №6',
+        nameKg: 'Сет №6',
+        description: 'Филадельфия гриль, Умани с курицей, Салмон с лососем, Чиз хот с креветкой',
+        descriptionKg: 'Филадельфия гриль, Тоок менен Умани, Лосось менен Салмон, Креветка менен Чиз хот',
+        price: 1499,
+        image: './imagemenu/set6.jpg',
+        category: 'sets'
     },
 
-    // ==================== ОСТРЫЕ КРЫЛЬЯШКИ ====================
+    // ==================== ХОЛОДНЫЕ РОЛЛЫ ====================
+    {
+        id: 7,
+        name: 'Канада',
+        nameKg: 'Канада',
+        description: 'Холодный ролл Канада',
+        descriptionKg: 'Канада муздак роллу',
+        price: 440,
+        image: './imagemenu/Канада.jpg',
+        category: 'cold_rolls'
+    },
     {
         id: 8,
-        name: 'Крыльяшки 6 шт',
-        nameKg: 'Канаттар 6 даана',
-        description: 'Острые куриные крылышки',
-        descriptionKg: 'Ачуу тоок канаттары',
-        price: 240,
-        image: 'https://edimdoma.ru/data/recipes/0014/5261/145261-ed4_wide.jpg?1759232294',
-        category: 'wings'
+        name: 'Япония',
+        nameKg: 'Япония',
+        description: 'Холодный ролл Япония',
+        descriptionKg: 'Япония муздак роллу',
+        price: 430,
+        image: './imagemenu/Japan.avif',
+        category: 'cold_rolls'
     },
     {
         id: 9,
-        name: 'Крыльяшки 10 шт',
-        nameKg: 'Канаттар 10 даана',
-        description: 'Острые куриные крылышки',
-        descriptionKg: 'Ачуу тоок канаттары',
-        price: 400,
-        image: 'https://edimdoma.ru/data/recipes/0014/5261/145261-ed4_wide.jpg?1759232294',
-        category: 'wings'
+        name: 'Магуро',
+        nameKg: 'Магуро',
+        description: 'Холодный ролл Магуро',
+        descriptionKg: 'Магуро муздак роллу',
+        price: 450,
+        image: './imagemenu/Магуро.avif',
+        category: 'cold_rolls'
     },
     {
         id: 10,
-        name: 'Крыльяшки 15 шт',
-        nameKg: 'Канаттар 15 даана',
-        description: 'Острые куриные крылышки',
-        descriptionKg: 'Ачуу тоок канаттары',
-        price: 600,
-        image: 'https://edimdoma.ru/data/recipes/0014/5261/145261-ed4_wide.jpg?1759232294',
-        category: 'wings'
+        name: 'Мидори',
+        nameKg: 'Мидори',
+        description: 'Холодный ролл Мидори',
+        descriptionKg: 'Мидори муздак роллу',
+        price: 480,
+        image: './imagemenu/midori.jpg',
+        category: 'cold_rolls'
     },
     {
         id: 11,
-        name: 'Крыльяшки 22 шт',
-        nameKg: 'Канаттар 22 даана',
-        description: 'Острые куриные крылышки',
-        descriptionKg: 'Ачуу тоок канаттары',
-        price: 880,
-        image: 'https://edimdoma.ru/data/recipes/0014/5261/145261-ed4_wide.jpg?1759232294',
-        category: 'wings'
+        name: 'Филадельфия',
+        nameKg: 'Филадельфия',
+        description: 'Холодный ролл Филадельфия',
+        descriptionKg: 'Филадельфия муздак роллу',
+        price: 430,
+        image: './imagemenu/philadelphia.jpg',
+        category: 'cold_rolls'
     },
     {
         id: 12,
-        name: 'Крыльяшки 30 шт',
-        nameKg: 'Канаттар 30 даана',
+        name: 'Эби Дабл',
+        nameKg: 'Эби Дабл',
+        description: 'Холодный ролл Эби Дабл',
+        descriptionKg: 'Эби Дабл муздак роллу',
+        price: 480,
+        image: './imagemenu/ebi_double.png',
+        category: 'cold_rolls'
+    },
+    // Вариативные роллы
+    {
+        id: 13,
+        name: 'Хоккайдо',
+        nameKg: 'Хоккайдо',
+        description: 'Вариативный ролл Хоккайдо',
+        descriptionKg: 'Хоккайдо өзгөрмө роллу',
+        variants: [
+            { name: 'Лосось', price: 430 },
+            { name: 'Креветка', price: 420 },
+            { name: 'Тунец', price: 410 },
+            { name: 'Курица', price: 380 }
+        ],
+        image: './imagemenu/hokkaido.jpg',
+        category: 'cold_rolls'
+    },
+    {
+        id: 14,
+        name: 'Яки ролл',
+        nameKg: 'Яки ролл',
+        description: 'Вариативный ролл Яки',
+        descriptionKg: 'Яки өзгөрмө роллу',
+        variants: [
+            { name: 'Лосось', price: 420 },
+            { name: 'Креветка', price: 410 },
+            { name: 'Тунец', price: 400 },
+            { name: 'Курица', price: 380 }
+        ],
+        image: './imagemenu/yaki_roll.jpg',
+        category: 'cold_rolls'
+    },
+    {
+        id: 15,
+        name: 'Фила Лайт',
+        nameKg: 'Фила Лайт',
+        description: 'Вариативный ролл Фила Лайт',
+        descriptionKg: 'Фила Лайт өзгөрмө роллу',
+        variants: [
+            { name: 'Лосось', price: 440 },
+            { name: 'Креветка', price: 430 },
+            { name: 'Тунец', price: 420 },
+            { name: 'Курица', price: 400 },
+            { name: 'Угорь', price: 460 }
+        ],
+        image: './imagemenu/phila_light.jpg',
+        category: 'cold_rolls'
+    },
+    {
+        id: 16,
+        name: 'Грин ролл',
+        nameKg: 'Грин ролл',
+        description: 'Вариативный ролл Грин',
+        descriptionKg: 'Грин өзгөрмө роллу',
+        variants: [
+            { name: 'Лосось', price: 420 },
+            { name: 'Креветка', price: 410 },
+            { name: 'Тунец', price: 400 },
+            { name: 'Курица', price: 380 }
+        ],
+        image: './imagemenu/green_roll.jpg',
+        category: 'cold_rolls'
+    },
+    {
+        id: 17,
+        name: 'Калифорния',
+        nameKg: 'Калифорния',
+        description: 'Вариативный ролл Калифорния',
+        descriptionKg: 'Калифорния өзгөрмө роллу',
+        variants: [
+            { name: 'Лосось', price: 420 },
+            { name: 'Креветка', price: 410 },
+            { name: 'Тунец', price: 400 },
+            { name: 'Курица', price: 380 }
+        ],
+        image: './imagemenu/california.jpg',
+        category: 'cold_rolls'
+    },
+    // Мини роллы
+    {
+        id: 18,
+        name: 'Мини ролл с огурцом',
+        nameKg: 'Огурц менен Мини ролл',
+        description: 'Мини ролл с огурцом',
+        descriptionKg: 'Огурц менен мини ролл',
+        price: 140,
+        image: './imagemenu/mini_cucumber.jpg',
+        category: 'cold_rolls'
+    },
+    {
+        id: 19,
+        name: 'Мини ролл с креветкой',
+        nameKg: 'Креветка менен Мини ролл',
+        description: 'Мини ролл с креветкой',
+        descriptionKg: 'Креветка менен мини ролл',
+        price: 220,
+        image: './imagemenu/mini_shrimp.jpg',
+        category: 'cold_rolls'
+    },
+
+    // ==================== ЗАПЕЧЕННЫЕ И ЖАРЕНЫЕ РОЛЛЫ ====================
+    {
+        id: 20,
+        name: 'Горячий ролл',
+        nameKg: 'Горячий ролл',
+        description: 'Запеченный ролл',
+        descriptionKg: 'Куурулган ролл',
+        variants: [
+            { name: 'Лосось', price: 410 },
+            { name: 'Креветка', price: 400 },
+            { name: 'Тунец', price: 390 },
+            { name: 'Курица', price: 370 }
+        ],
+        image: './imagemenu/hot_roll.jpg',
+        category: 'baked_rolls'
+    },
+    {
+        id: 21,
+        name: 'Спайси ролл',
+        nameKg: 'Спайси ролл',
+        description: 'Острый запеченный ролл',
+        descriptionKg: 'Ачуу куурулган ролл',
+        variants: [
+            { name: 'Лосось', price: 400 },
+            { name: 'Креветка', price: 390 },
+            { name: 'Тунец', price: 380 },
+            { name: 'Курица', price: 350 }
+        ],
+        image: './imagemenu/spicy_roll.jpg',
+        category: 'baked_rolls'
+    },
+    {
+        id: 22,
+        name: 'Темпура Ролл',
+        nameKg: 'Темпура Ролл',
+        description: 'Жареный ролл в темпуре',
+        descriptionKg: 'Темпурада куурулган ролл',
+        variants: [
+            { name: 'Лосось', price: 420 },
+            { name: 'Креветка', price: 410 },
+            { name: 'Тунец', price: 400 },
+            { name: 'Курица', price: 380 }
+        ],
+        image: './imagemenu/tempura_roll.jpg',
+        category: 'baked_rolls'
+    },
+    {
+        id: 23,
+        name: 'Чиз хот / Чизу Хот',
+        nameKg: 'Чиз хот / Чизу Хот',
+        description: 'Ролл с сыром и острым соусом',
+        descriptionKg: 'Сыр жана ачуу соус менен ролл',
+        variants: [
+            { name: 'Лосось', price: 420 },
+            { name: 'Креветка', price: 410 },
+            { name: 'Тунец', price: 400 },
+            { name: 'Курица', price: 340 }
+        ],
+        image: './imagemenu/cheese_hot.jpg',
+        category: 'baked_rolls'
+    },
+    {
+        id: 24,
+        name: 'Фила Гриль',
+        nameKg: 'Фила Гриль',
+        description: 'Запеченный ролл Филадельфия',
+        descriptionKg: 'Куурулган Филадельфия роллу',
+        variants: [
+            { name: 'Лосось', price: 470 },
+            { name: 'Креветка', price: 460 },
+            { name: 'Тунец', price: 450 },
+            { name: 'Курица', price: 440 },
+            { name: 'Угорь', price: 470 }
+        ],
+        image: './imagemenu/phila_grill.jpg',
+        category: 'baked_rolls'
+    },
+    {
+        id: 25,
+        name: 'Хот Салмон / Умани / Яшими',
+        nameKg: 'Хот Салмон / Умани / Яшими',
+        description: 'Острый ролл с лососем',
+        descriptionKg: 'Лосось менен ачуу ролл',
+        variants: [
+            { name: 'Лосось', price: 440 },
+            { name: 'Креветка', price: 430 },
+            { name: 'Тунец', price: 420 },
+            { name: 'Курица', price: 390 }
+        ],
+        image: './imagemenu/hot_salmon.jpg',
+        category: 'baked_rolls'
+    },
+    {
+        id: 26,
+        name: 'Туна Хот / Гуру ролл',
+        nameKg: 'Туна Хот / Гуру ролл',
+        description: 'Острый ролл с тунцом',
+        descriptionKg: 'Тунец менен ачуу ролл',
+        variants: [
+            { name: 'Лосось', price: 450 },
+            { name: 'Креветка', price: 440 },
+            { name: 'Тунец', price: 430 },
+            { name: 'Курица', price: 420 }
+        ],
+        image: './imagemenu/tuna_hot.jpg',
+        category: 'baked_rolls'
+    },
+
+    // ==================== KFC ====================
+    {
+        id: 27,
+        name: 'Острые крылышки 6 шт',
+        nameKg: 'Ачуу канаттар 6 даана',
+        description: 'Острые куриные крылышки',
+        descriptionKg: 'Ачуу тоок канаттары',
+        price: 240,
+        image: './imagemenu/wings6.jpg',
+        category: 'wings'
+    },
+    {
+        id: 28,
+        name: 'Острые крылышки 10 шт',
+        nameKg: 'Ачуу канаттар 10 даана',
+        description: 'Острые куриные крылышки',
+        descriptionKg: 'Ачуу тоок канаттары',
+        price: 400,
+        image: './imagemenu/wings10.jpg',
+        category: 'wings'
+    },
+    {
+        id: 29,
+        name: 'Острые крылышки 15 шт',
+        nameKg: 'Ачуу канаттар 15 даана',
+        description: 'Острые куриные крылышки',
+        descriptionKg: 'Ачуу тоок канаттары',
+        price: 600,
+        image: './imagemenu/wings15.jpg',
+        category: 'wings'
+    },
+    {
+        id: 30,
+        name: 'Острые крылышки 22 шт',
+        nameKg: 'Ачуу канаттар 22 даана',
+        description: 'Острые куриные крылышки',
+        descriptionKg: 'Ачуу тоок канаттары',
+        price: 880,
+        image: './imagemenu/wings22.jpg',
+        category: 'wings'
+    },
+    {
+        id: 31,
+        name: 'Острые крылышки 30 шт',
+        nameKg: 'Ачуу канаттар 30 даана',
         description: 'Острые куриные крылышки',
         descriptionKg: 'Ачуу тоок канаттары',
         price: 1200,
-        image: 'https://edimdoma.ru/data/recipes/0014/5261/145261-ed4_wide.jpg?1759232294',
+        image: './imagemenu/wings30.jpg',
         category: 'wings'
     },
-
-    // ==================== НАГГЕТСЫ ====================
     {
-        id: 13,
+        id: 32,
         name: 'Наггетсы 10 шт',
         nameKg: 'Наггетс 10 даана',
         description: 'Хрустящие куриные наггетсы',
         descriptionKg: 'Кытырак тоок наггетстери',
         price: 250,
-        image: 'https://www.koolinar.ru/all_image/recipes/156/156110/recipe_a29c73e2-e7c9-49d0-8baf-1695b91e7b7c_large.jpg',
+        image: './imagemenu/nuggets10.jpg',
         category: 'nuggets'
     },
     {
-        id: 14,
+        id: 33,
         name: 'Наггетсы 15 шт',
         nameKg: 'Наггетс 15 даана',
         description: 'Хрустящие куриные наггетсы',
         descriptionKg: 'Кытырак тоок наггетстери',
         price: 350,
-        image: 'https://www.koolinar.ru/all_image/recipes/156/156110/recipe_a29c73e2-e7c9-49d0-8baf-1695b91e7b7c_large.jpg',
+        image: './imagemenu/nuggets15.jpg',
         category: 'nuggets'
     },
     {
-        id: 15,
+        id: 34,
         name: 'Наггетсы 20 шт',
         nameKg: 'Наггетс 20 даана',
         description: 'Хрустящие куриные наггетсы',
         descriptionKg: 'Кытырак тоок наггетстери',
         price: 450,
-        image: 'https://www.koolinar.ru/all_image/recipes/156/156110/recipe_a29c73e2-e7c9-49d0-8baf-1695b91e7b7c_large.jpg',
+        image: './imagemenu/nuggets20.jpg',
         category: 'nuggets'
     },
     {
-        id: 16,
+        id: 35,
         name: 'Наггетсы 30 шт',
         nameKg: 'Наггетс 30 даана',
         description: 'Хрустящие куриные наггетсы',
         descriptionKg: 'Кытырак тоок наггетстери',
         price: 660,
-        image: 'https://www.koolinar.ru/all_image/recipes/156/156110/recipe_a29c73e2-e7c9-49d0-8baf-1695b91e7b7c_large.jpg',
+        image: './imagemenu/nuggets30.jpg',
         category: 'nuggets'
     },
 
-    // ==================== КАРТОШКА ====================
+    // ==================== ПИЦЦА ====================
     {
-        id: 17,
-        name: 'Картофель Фри',
-        nameKg: 'Фри картөшкө',
-        description: 'Хрустящий картофель фри',
-        descriptionKg: 'Кытырак фри картөшкө',
+        id: 36,
+        name: 'Маргарита',
+        nameKg: 'Маргарита',
+        description: 'Классическая пицца с томатным соусом и моцареллой',
+        descriptionKg: 'Классикалык помидор соусу жана моцарелла менен',
+        price: 450,
+        image: './imagemenu/margarita.jpg',
+        category: 'pizza'
+    },
+    {
+        id: 37,
+        name: 'Пепперони / Детская',
+        nameKg: 'Пепперони / Балдарга',
+        description: 'Пицца с пепперони или детская',
+        descriptionKg: 'Пепперони же балдар пиццасы',
+        price: 480,
+        image: './imagemenu/pepperoni.jpg',
+        category: 'pizza'
+    },
+    {
+        id: 38,
+        name: 'Курица с грибами',
+        nameKg: 'Козу карын менен тоок',
+        description: 'Сочная пицца с куриным филе и шампиньонами',
+        descriptionKg: 'Тоок филеси жана шампиньон кошулган ширелүү пицца',
+        price: 500,
+        image: './imagemenu/chicken_mushrooms.jpg',
+        category: 'pizza'
+    },
+    {
+        id: 39,
+        name: 'Фрикасе',
+        nameKg: 'Фрикасе',
+        description: 'Пицца с нежным соусом фрикасе и курицей',
+        descriptionKg: 'Фрикасе соусу жана тоок эти кошулган пицца',
+        price: 520,
+        image: './imagemenu/fricase.jpg',
+        category: 'pizza'
+    },
+    {
+        id: 40,
+        name: 'Мясная / Чили',
+        nameKg: 'Эттүү / Чили',
+        description: 'Сытная пицца с мясом или острая с чили',
+        descriptionKg: 'Эт кошулган тойумдуу пицца же чили менен ачуу',
+        price: 550,
+        image: './imagemenu/meat_chili.jpg',
+        category: 'pizza'
+    },
+
+    // ==================== КАРТОФЕЛЬ И ДОПЫ ====================
+    {
+        id: 41,
+        name: 'Картофель Фри / Шарики',
+        nameKg: 'Фри картөшкө / Шарики',
+        description: 'Картофель фри или шарики',
+        descriptionKg: 'Фри картөшкө же шарики',
         price: 130,
-        image: 'https://www.chefmarket.ru/blog/wp-content/uploads/2020/01/fried-chick-2000x1200.jpg',
+        image: './imagemenu/fries_balls.jpg',
         category: 'potato'
     },
     {
-        id: 18,
-        name: 'По-Деревенски',
+        id: 42,
+        name: 'По-деревенски',
         nameKg: 'Айылдык картөшкө',
         description: 'Картофель по-деревенски с пряностями',
         descriptionKg: 'Айылдык картөшкө',
         price: 150,
-        image: 'https://lafoy.ru/photo_l/foto-4456-2.jpg',
+        image: './imagemenu/rustic_potatoes.jpg',
         category: 'potato'
     },
     {
-        id: 19,
-        name: 'Картофельные шарики',
-        nameKg: 'Картөшкө тоголокчолору',
-        description: 'Хрустящие картофельные шарики',
-        descriptionKg: 'Кытырак картөшкө тоголокчолору',
-        price: 130,
-        image: 'https://img.iamcook.ru/old/upl/recipes/cat/u1169-c8338c700c52d3dc7043abce47bef4fa.JPG',
+        id: 43,
+        name: 'Соусы',
+        nameKg: 'Соустар',
+        description: 'Соусы: Сырный, Чесночный, Барбекю, Кетчуп',
+        descriptionKg: 'Соустар: Сырный, Чесночный, Барбекю, Кетчуп',
+        price: 30,
+        image: './imagemenu/sauces.jpg',
         category: 'potato'
     },
 
-    // ==================== WOK (СОБА) ====================
+    // ==================== СОБЕРИ СВОЮ ЛАПШУ (WOK) ====================
+    // Основа
     {
-        id: 20,
-        name: 'Гречневая соба',
-        nameKg: 'Каракумча соба',
-        description: 'Основа: гречневая лапша соба с овощной смесью',
-        descriptionKg: 'Негизи: каракумча кесмеси соба жашылча аралашмасы менен',
+        id: 44,
+        name: 'Основа: Соба',
+        nameKg: 'Негиз: Соба',
+        description: 'Гречневая лапша соба',
+        descriptionKg: 'Каракумча кесме соба',
         price: 160,
-        image: 'https://www.povarenok.ru/data/cache/2023jan/21/55/3033845_65334-710x550x.jpg',
-        category: 'wok',
-        base: true
+        image: './imagemenu/soba.jpg',
+        category: 'wok'
     },
     {
-        id: 21,
-        name: 'Удон',
-        nameKg: 'Удон',
-        description: 'Основа: толстая пшеничная лапша удон с овощной смесью',
-        descriptionKg: 'Негизи: жоон буудай кесмеси удон жашылча аралашмасы менен',
+        id: 45,
+        name: 'Основа: Удон',
+        nameKg: 'Негиз: Удон',
+        description: 'Толстая пшеничная лапша удон',
+        descriptionKg: 'Жоон буудай кесме удон',
         price: 160,
-        image: 'https://bandler.ru/image/catalog/product/recepti/fettuchini-s-semgoj.jpg',
-        category: 'wok',
-        base: true
+        image: './imagemenu/udon.jpg',
+        category: 'wok'
     },
     {
-        id: 22,
-        name: 'Яичная рамен',
-        nameKg: 'Жумуртка рамен',
-        description: 'Основа: яичная лапша рамен с овощной смесью',
-        descriptionKg: 'Негизи: жумуртка кесмеси рамен жашылча аралашмасы менен',
+        id: 46,
+        name: 'Основа: Рамен',
+        nameKg: 'Негиз: Рамен',
+        description: 'Яичная лапша рамен',
+        descriptionKg: 'Жумуртка кесме рамен',
         price: 160,
-        image: 'https://opis-cdn.tinkoffjournal.ru/mercury/inramen2.c3mkuj4avtxt..jpg',
-        category: 'wok',
-        base: true
+        image: './imagemenu/ramen.jpg',
+        category: 'wok'
     },
     {
-        id: 23,
-        name: 'Фунчоза',
-        nameKg: 'Фунчоза',
-        description: 'Основа: стеклянная лапша фунчоза с овощной смесью',
-        descriptionKg: 'Негизи: айнек кесмеси фунчоза жашылча аралашмасы менен',
+        id: 47,
+        name: 'Основа: Фунчоза',
+        nameKg: 'Негиз: Фунчоза',
+        description: 'Стеклянная лапша фунчоза',
+        descriptionKg: 'Айнек кесме фунчоза',
         price: 180,
-        image: 'https://i.ytimg.com/vi/cZnNPgADKTQ/hq720.jpg',
-        category: 'wok',
-        base: true
+        image: './imagemenu/funchoza.jpg',
+        category: 'wok'
     },
-    // Наполнители для WOK (как отдельные позиции с пометкой addon)
+    // Наполнитель
     {
-        id: 24,
-        name: 'Курица (наполнитель)',
-        nameKg: 'Тоок (кошумча)',
-        description: 'Добавка курицы в WOK',
-        descriptionKg: 'WOKко тоок этин кошуу',
+        id: 48,
+        name: 'Наполнитель: Мясо',
+        nameKg: 'Кошумча: Эт',
+        description: 'Мясной наполнитель',
+        descriptionKg: 'Эт кошумчасы',
+        variants: [
+            { name: 'Курица', price: 50 },
+            { name: 'Индейка', price: 60 },
+            { name: 'Говядина', price: 90 },
+            { name: 'Креветка', price: 120 }
+        ],
+        image: './imagemenu/meat_filler.jpg',
+        category: 'wok'
+    },
+    {
+        id: 49,
+        name: 'Наполнитель: Овощи',
+        nameKg: 'Кошумча: Жашылчалар',
+        description: 'Овощной наполнитель',
+        descriptionKg: 'Жашылча кошумчасы',
+        price: 30,
+        image: './imagemenu/veg_filler.jpg',
+        category: 'wok'
+    },
+    // Соус
+    {
+        id: 50,
+        name: 'Соус: Терияки',
+        nameKg: 'Соус: Терияки',
+        description: 'Соус терияки',
+        descriptionKg: 'Терияки соусу',
         price: 50,
-        image: 'https://здоровое-питание.рф/upload/iblock/6a2/s9gmf27dxsnbjvoap4btpytvdrwikpnh/Pasta-fetuchini-kuritsa-s-gribami-v-slivochnom-souse-5.jpg',
-        category: 'wok',
-        addon: true
+        image: './imagemenu/teriyaki.jpg',
+        category: 'wok'
     },
     {
-        id: 25,
-        name: 'Индейка (наполнитель)',
-        nameKg: 'Индейка (кошумча)',
-        description: 'Добавка индейки в WOK',
-        descriptionKg: 'WOKко индейка этин кошуу',
-        price: 60,
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTL1ml_CCi-1FvCUye__NUK_6_q0G8ylc91Xg&s',
-        category: 'wok',
-        addon: true
+        id: 51,
+        name: 'Соус: Сливочный',
+        nameKg: 'Соус: Сливочный',
+        description: 'Сливочный соус',
+        descriptionKg: 'Сливочный соус',
+        price: 50,
+        image: './imagemenu/creamy.jpg',
+        category: 'wok'
     },
     {
-        id: 26,
-        name: 'Говядина (наполнитель)',
-        nameKg: 'Жылкы эти (кошумча)',
-        description: 'Добавка говядины в WOK',
-        descriptionKg: 'WOKко жылкы этин кошуу',
-        price: 90,
-        image: 'https://restoran-mimi.ru/assets/content/shashlik-iz-govyadini-7.jpg',
-        category: 'wok',
-        addon: true
+        id: 52,
+        name: 'Соус: Устричный',
+        nameKg: 'Соус: Устричный',
+        description: 'Устричный соус',
+        descriptionKg: 'Устричный соус',
+        price: 50,
+        image: './imagemenu/oyster.jpg',
+        category: 'wok'
     },
     {
-        id: 27,
-        name: 'Креветка (наполнитель)',
-        nameKg: 'Креветка (кошумча)',
-        description: 'Добавка креветок в WOK',
-        descriptionKg: 'WOKко креветка кошуу',
-        price: 120,
-        image: 'https://finecooking.ru/images/recipe/steyki-foreli-zapechennye-v-duhovke/photo/960w.jpg',
-        category: 'wok',
-        addon: true
+        id: 53,
+        name: 'Соус: Кимчи',
+        nameKg: 'Соус: Кимчи',
+        description: 'Соус кимчи',
+        descriptionKg: 'Кимчи соусу',
+        price: 50,
+        image: './imagemenu/kimchi.jpg',
+        category: 'wok'
     },
+
+    // ==================== СУПЫ ====================
     {
-        id: 28,
-        name: 'Черри (наполнитель)',
-        nameKg: 'Черри (кошумча)',
-        description: 'Добавка помидоров черри в WOK',
-        descriptionKg: 'WOKко черри помидорун кошуу',
-        price: 30,
-        image: 'https://www.russianfood.com/dycontent/images_upl/565/big_564981.jpg',
-        category: 'wok',
-        addon: true
-    },
-    {
-        id: 29,
-        name: 'Шампиньоны (наполнитель)',
-        nameKg: 'Шампиньон (кошумча)',
-        description: 'Добавка шампиньонов в WOK',
-        descriptionKg: 'WOKко шампиньон кошуу',
-        price: 30,
-        image: 'https://sovkusom.ru/wp-content/uploads/recepty/s/salat-s-shampinyonami/thumb-840x440.jpg',
-        category: 'wok',
-        addon: true
-    },
-    {
-        id: 30,
-        name: 'Стручковая фасоль (наполнитель)',
-        nameKg: 'Буурчак (кошумча)',
-        description: 'Добавка стручковой фасоли в WOK',
-        descriptionKg: 'WOKко буурчак кошуу',
-        price: 30,
-        image: 'https://www.russianfood.com/dycontent/images_upl/546/big_545819.jpg',
-        category: 'wok',
-        addon: true
-    },
-    {
-        id: 31,
-        name: 'Баклажан (наполнитель)',
-        nameKg: 'Баклажан (кошумча)',
-        description: 'Добавка баклажанов в WOK',
-        descriptionKg: 'WOKко баклажан кошуу',
-        price: 30,
-        image: 'https://www.russianfood.com/dycontent/images_upl/777/big_776231.jpg',
-        category: 'wok',
-        addon: true
-    },
-    // Супы
-    {
-        id: 32,
-        name: 'Суп Том Ям с креветкой',
-        nameKg: 'Креветкалуу Том Ям шорпосy',
+        id: 54,
+        name: 'Том Ям с креветкой',
+        nameKg: 'Креветкалуу Том Ям шорпосу',
         description: 'Острый суп Том Ям с креветками',
-        descriptionKg: 'Креветка кошулган ачуу Том Ям шорпосy',
+        descriptionKg: 'Креветка кошулган ачуу Том Ям шорпосу',
         price: 420,
-        image: 'https://img.povar.ru/mobile/a5/11/49/9f/shorpo-409463.jpg',
-        category: 'wok',
-        soup: true
+        image: './imagemenu/tom_yam_shrimp.jpg',
+        category: 'soups'
     },
     {
-        id: 33,
-        name: 'Суп Том Ям с курицей',
-        nameKg: 'Тооктуу Том Ям шорпосy',
+        id: 55,
+        name: 'Том Ям с курицей',
+        nameKg: 'Тооктуу Том Ям шорпосу',
         description: 'Острый суп Том Ям с курицей',
-        descriptionKg: 'Тоок эти кошулган ачуу Том Ям шорпосy',
+        descriptionKg: 'Тоок эти кошулган ачуу Том Ям шорпосу',
         price: 350,
-        image: 'https://www.russianfood.com/dycontent/images_upl/565/big_564981.jpg',
-        category: 'wok',
-        soup: true
+        image: './imagemenu/tom_yam_chicken.jpg',
+        category: 'soups'
     },
 
     // ==================== BUBBLE TEA ====================
     {
-        id: 34,
-        name: 'Фирменный Bubble Tea',
-        nameKg: 'Фирмалык Bubble Tea',
+        id: 56,
+        name: 'Фирменный',
+        nameKg: 'Фирмалык',
         description: 'Фирменный бабл ти',
         descriptionKg: 'Фирмалык бабл ти',
-        prices: { M: 240, L: 290 },
-        image: 'https://neman.kg/images/watermarked/detailed/34/unnamed_n7sb-ck.webp',
+        variants: [
+            { name: 'M', price: 240 },
+            { name: 'L', price: 290 }
+        ],
+        image: './imagemenu/firm_bubble.jpg',
         category: 'bubble_tea'
     },
     {
-        id: 35,
-        name: 'Bubble Tea OREO',
-        nameKg: 'Bubble Tea OREO',
+        id: 57,
+        name: 'Oрео',
+        nameKg: 'Oрео',
         description: 'Бабл ти с печеньем OREO',
         descriptionKg: 'OREO печеньеси кошулган бабл ти',
-        prices: { M: 240, L: 290 },
-        image: 'https://dostavka-produktov.ru/image/cache/catalog/products_images/3176277-1000x1000.jpg',
+        variants: [
+            { name: 'M', price: 240 },
+            { name: 'L', price: 290 }
+        ],
+        image: './imagemenu/oreo_bubble.jpg',
         category: 'bubble_tea'
     },
     {
-        id: 36,
-        name: 'Bubble Tea Сникерс',
-        nameKg: 'Bubble Tea Сникерс',
+        id: 58,
+        name: 'Сникерс',
+        nameKg: 'Сникерс',
         description: 'Бабл ти со вкусом Сникерс',
         descriptionKg: 'Сникерс даамындагы бабл ти',
-        prices: { M: 240, L: 290 },
-        image: 'https://cdn.nur.kz/images/1200x675/aae7343159f27780.jpeg?version=1',
+        variants: [
+            { name: 'M', price: 240 },
+            { name: 'L', price: 290 }
+        ],
+        image: './imagemenu/snickers_bubble.jpg',
         category: 'bubble_tea'
     },
     {
-        id: 37,
-        name: 'Bubble Tea Твикс',
-        nameKg: 'Bubble Tea Твикс',
+        id: 59,
+        name: 'Твикс',
+        nameKg: 'Твикс',
         description: 'Бабл ти со вкусом Твикс',
         descriptionKg: 'Твикс даамындагы бабл ти',
-        prices: { M: 230, L: 280 },
-        image: 'https://tochkamarket.ru/upload/iblock/5f9/rfprgsonxwxsc8hoaz027ghn0iyllo1u.jpg',
+        variants: [
+            { name: 'M', price: 230 },
+            { name: 'L', price: 280 }
+        ],
+        image: './imagemenu/twix_bubble.jpg',
         category: 'bubble_tea'
     },
     {
-        id: 38,
-        name: 'Bubble Tea Фисташка Матча',
-        nameKg: 'Bubble Tea Фисташка Матча',
+        id: 60,
+        name: 'Фисташка Матча',
+        nameKg: 'Фисташка Матча',
         description: 'Бабл ти со вкусом фисташки и матчи',
         descriptionKg: 'Фисташка жана матча даамындагы бабл ти',
-        prices: { M: 250, L: 300 },
-        image: 'https://art-lunch.ru/content/uploads/2014/08/cheesecake-new-york-001x2-1.jpg',
+        variants: [
+            { name: 'M', price: 250 },
+            { name: 'L', price: 300 }
+        ],
+        image: './imagemenu/pistachio_matcha.jpg',
         category: 'bubble_tea'
     },
     {
-        id: 39,
-        name: 'Bubble Tea Матча OREO',
-        nameKg: 'Bubble Tea Матча OREO',
+        id: 61,
+        name: 'Матча Oрео',
+        nameKg: 'Матча Oрео',
         description: 'Бабл ти со вкусом матчи и OREO',
         descriptionKg: 'Матча жана OREO даамындагы бабл ти',
-        prices: { M: 250, L: 300 },
-        image: 'https://3259404.ru/upload/iblock/fb6/nx32auk4u9xu7peyhyvh3ke5lvhigp6z.webp',
+        variants: [
+            { name: 'M', price: 250 },
+            { name: 'L', price: 300 }
+        ],
+        image: './imagemenu/matcha_oreo.jpg',
         category: 'bubble_tea'
     },
     {
-        id: 40,
-        name: 'Bubble Tea Матча Манго',
-        nameKg: 'Bubble Tea Матча Манго',
+        id: 62,
+        name: 'Матча Манго',
+        nameKg: 'Матча Манго',
         description: 'Бабл ти со вкусом матчи и манго',
         descriptionKg: 'Матча жана манго даамындагы бабл ти',
-        prices: { M: 250, L: 300 },
-        image: 'https://art-lunch.ru/content/uploads/2018/07/Greek_salad_01.jpg',
+        variants: [
+            { name: 'M', price: 250 },
+            { name: 'L', price: 300 }
+        ],
+        image: './imagemenu/matcha_mango.jpg',
         category: 'bubble_tea'
     },
     {
-        id: 41,
-        name: 'Bubble Tea Матча Клубника',
-        nameKg: 'Bubble Tea Матча Клубника',
+        id: 63,
+        name: 'Матча Клубника',
+        nameKg: 'Матча Клубника',
         description: 'Бабл ти со вкусом матчи и клубники',
         descriptionKg: 'Матча жана клубника даамындагы бабл ти',
-        prices: { M: 250, L: 300 },
-        image: 'https://www.russianfood.com/dycontent/images_upl/68/big_67797.jpg',
+        variants: [
+            { name: 'M', price: 250 },
+            { name: 'L', price: 300 }
+        ],
+        image: './imagemenu/matcha_strawberry.jpg',
         category: 'bubble_tea'
     },
     {
-        id: 42,
-        name: 'Bubble Tea Банан Шоколад',
-        nameKg: 'Bubble Tea Банан Шоколад',
+        id: 64,
+        name: 'Банан-Шоколад',
+        nameKg: 'Банан-Шоколад',
         description: 'Бабл ти со вкусом банана и шоколада',
         descriptionKg: 'Банан жана шоколад даамындагы бабл ти',
-        prices: { M: 240, L: 290 },
-        image: 'https://i.ytimg.com/vi/sGjV5ER10ys/sddefault.jpg',
+        variants: [
+            { name: 'M', price: 240 },
+            { name: 'L', price: 290 }
+        ],
+        image: './imagemenu/banana_chocolate.jpg',
         category: 'bubble_tea'
     },
     {
-        id: 43,
-        name: 'Bubble Tea Кофе Шоколад',
-        nameKg: 'Bubble Tea Кофе Шоколад',
+        id: 65,
+        name: 'Кофе-Шоколад',
+        nameKg: 'Кофе-Шоколад',
         description: 'Бабл ти со вкусом кофе и шоколада',
         descriptionKg: 'Кофе жана шоколад даамындагы бабл ти',
-        prices: { M: 250, L: 300 },
-        image: 'https://img.iamcook.ru/old/upl/recipes/cat/u4142-10b7c9c0972f7a6486ec930a56c01777.jpg',
+        variants: [
+            { name: 'M', price: 250 },
+            { name: 'L', price: 300 }
+        ],
+        image: './imagemenu/coffee_chocolate.jpg',
         category: 'bubble_tea'
     },
     {
-        id: 44,
-        name: 'Bubble Tea Таро Батат',
-        nameKg: 'Bubble Tea Таро Батат',
+        id: 66,
+        name: 'Таро Батат',
+        nameKg: 'Таро Батат',
         description: 'Бабл ти со вкусом таро',
         descriptionKg: 'Таро даамындагы бабл ти',
-        prices: { M: 240, L: 290 },
-        image: 'https://img2.goodfon.ru/original/5616x3744/0/63/stol-zavarnik-chay-napitok.jpg',
+        variants: [
+            { name: 'M', price: 240 },
+            { name: 'L', price: 290 }
+        ],
+        image: './imagemenu/taro.jpg',
         category: 'bubble_tea'
     },
     {
-        id: 45,
-        name: 'Bubble Tea Бабл Манго',
-        nameKg: 'Bubble Tea Бабл Манго',
+        id: 67,
+        name: 'Бабл Манго',
+        nameKg: 'Бабл Манго',
         description: 'Бабл ти со вкусом манго',
         descriptionKg: 'Манго даамындагы бабл ти',
-        prices: { M: 240, L: 290 },
-        image: 'https://zira.uz/wp-content/uploads/2022/06/shaurma-18.jpg',
+        variants: [
+            { name: 'M', price: 240 },
+            { name: 'L', price: 290 }
+        ],
+        image: './imagemenu/bubble_mango.jpg',
         category: 'bubble_tea'
     },
     {
-        id: 46,
-        name: 'Bubble Tea Таро Клубника',
-        nameKg: 'Bubble Tea Таро Клубника',
+        id: 68,
+        name: 'Таро Клубника',
+        nameKg: 'Таро Клубника',
         description: 'Бабл ти со вкусом таро и клубники',
         descriptionKg: 'Таро жана клубника даамындагы бабл ти',
-        prices: { M: 240, L: 290 },
-        image: 'https://foodmood.ru/upload/iblock/bfe/bfe5b51ce6ea8a5f17b59c153ac3fcf9.jpeg',
+        variants: [
+            { name: 'M', price: 240 },
+            { name: 'L', price: 290 }
+        ],
+        image: './imagemenu/taro_strawberry.jpg',
         category: 'bubble_tea'
     },
     {
-        id: 47,
-        name: 'Bubble Tea Brown Sugar',
-        nameKg: 'Bubble Tea Brown Sugar',
+        id: 69,
+        name: 'Brown Sugar',
+        nameKg: 'Brown Sugar',
         description: 'Бабл ти с коричневым сахаром',
         descriptionKg: 'Күрөң кант кошулган бабл ти',
-        prices: { M: 240, L: 290 },
-        image: 'https://prostokvashino.ru/upload/resize_cache/iblock/74f/800_800_0/74fe90dd6ef5f047dcadff513c8d75d7.jpg',
+        variants: [
+            { name: 'M', price: 240 },
+            { name: 'L', price: 290 }
+        ],
+        image: './imagemenu/brown_sugar.jpg',
         category: 'bubble_tea'
     },
     {
-        id: 48,
-        name: 'Bubble Tea Бабл Ти Дыня',
-        nameKg: 'Bubble Tea Бабл Ти Дыня',
-        description: 'Бабл ти со вкусом дыни',
-        descriptionKg: 'Кант даамындагы бабл ти',
-        prices: { M: 230, L: 290 },
-        image: 'https://i.ytimg.com/vi/US6fbAwR_2E/maxresdefault.jpg',
-        category: 'bubble_tea'
-    },
-    {
-        id: 49,
-        name: 'Bubble Tea Небесный Чай',
-        nameKg: 'Bubble Tea Асман чайы',
-        description: 'Бабл ти со вкусом небесного чая',
-        descriptionKg: 'Асман чайы даамындагы бабл ти',
-        prices: { M: 250, L: 300 },
-        image: 'https://cdn.smt.bz/uploads/media/photo/2236799/%D1%81%D0%B2%D0%B5%D0%B6%D0%B8%D0%B9.webp',
+        id: 70,
+        name: 'Небесный чай',
+        nameKg: 'Асман чай',
+        description: 'Небесный бабл ти',
+        descriptionKg: 'Асман бабл ти',
+        variants: [
+            { name: 'M', price: 240 },
+            { name: 'L', price: 290 }
+        ],
+        image: './imagemenu/heavenly_tea.jpg',
         category: 'bubble_tea'
     },
 
     // ==================== ICE TEA ====================
     {
-        id: 50,
-        name: 'Ice Tea Мохито Виноград',
-        nameKg: 'Ice Tea Мохито Виноград',
-        description: 'Освежающий айс ти со вкусом мохито и винограда',
-        descriptionKg: 'Мохито жана жүзүм даамындагы муздак чай',
-        prices: { M: 230, L: 280 },
-        image: 'https://i.ytimg.com/vi/x065ZmRdxBU/maxresdefault.jpg',
-        category: 'ice_tea'
-    },
-    {
-        id: 51,
-        name: 'Ice Tea Манго Маракуйя',
-        nameKg: 'Ice Tea Манго Маракуйя',
-        description: 'Освежающий айс ти со вкусом манго и маракуйи',
-        descriptionKg: 'Манго жана маракуйя даамындагы муздак чай',
-        prices: { M: 230, L: 280 },
-        image: 'https://images.gastronom.ru/LoVJjeEYXJQ3vR2Yn8WtlivB0eZ78Rtu417zEnX1mZs/pr:content-group-preview-image/g:ce/rs:auto:0:0:0/L2Ntcy9hbGwtaW1hZ2VzLzk1YTg3ZTcxLTI0MjQtNGM3MC04MjllLTA2MTYyOTRjOGFhMi5qcGc.webp',
-        category: 'ice_tea'
-    },
-    {
-        id: 52,
-        name: 'Ice Tea Киви Яблоко',
-        nameKg: 'Ice Tea Киви Яблоко',
-        description: 'Освежающий айс ти со вкусом киви и яблока',
-        descriptionKg: 'Киви жана алма даамындагы муздак чай',
-        prices: { M: 230, L: 280 },
-        image: 'https://www.russianfood.com/dycontent/images_upl/503/big_502335.jpg',
-        category: 'ice_tea'
-    },
-    {
-        id: 53,
-        name: 'Ice Tea Клубника Персик',
-        nameKg: 'Ice Tea Клубника Персик',
-        description: 'Освежающий айс ти со вкусом клубники и персика',
-        descriptionKg: 'Клубника жана шабдалы даамындагы муздак чай',
-        prices: { M: 230, L: 280 },
-        image: 'https://www.russianfood.com/dycontent/images_upl/527/big_526629.jpg',
-        category: 'ice_tea'
-    },
-    {
-        id: 54,
-        name: 'Ice Tea Виноград Черника',
-        nameKg: 'Ice Tea Виноград Черника',
-        description: 'Освежающий айс ти со вкусом винограда и черники',
-        descriptionKg: 'Жүзүм жана көк бүлдүркөн даамындагы муздак чай',
-        prices: { M: 230, L: 280 },
-        image: 'https://www.russianfood.com/dycontent/images_upl/645/big_644398.jpg',
-        category: 'ice_tea'
-    },
-    {
-        id: 55,
-        name: 'Ice Tea Ягодный',
-        nameKg: 'Ice Tea Жидек',
-        description: 'Освежающий айс ти со вкусом ягод',
-        descriptionKg: 'Жидек даамындагы муздак чай',
-        prices: { M: 230, L: 280 },
-        image: 'https://cdn.tveda.ru/thumbs/3cc/3ccfd856d12bcfb474a1b37e886777b9/08be2c4d446d23e23ba82d5483e2f396.jpg',
-        category: 'ice_tea'
-    },
-    {
-        id: 56,
-        name: 'Ice Tea Манго Персик',
-        nameKg: 'Ice Tea Манго Персик',
-        description: 'Освежающий айс ти со вкусом манго и персика',
-        descriptionKg: 'Манго жана шабдалы даамындагы муздак чай',
-        prices: { M: 230, L: 280 },
-        image: 'https://bigasia.ru/wp-content/uploads/2023/04/2435c715734d0d295dc9c342ccf20ab6.jpg',
-        category: 'ice_tea'
-    },
-
-    // ==================== ЛИМОНАДЫ ====================
-    {
-        id: 57,
-        name: 'Лимонад Дыня зеленая Тархун',
-        nameKg: 'Лимонад Жашыл дарбыз Тархун',
-        description: 'Освежающий лимонад со вкусом дыни и тархуна',
-        descriptionKg: 'Дарбыз жана тархун даамындагы муздак лимонад',
-        price: 150,
-        volume: '0.5/0.8 л',
-        image: 'https://zira.uz/wp-content/uploads/2023/09/gulyash.jpg',
-        category: 'lemonade'
-    },
-    {
-        id: 58,
-        name: 'Лимонад Клубника, Малина',
-        nameKg: 'Лимонад Клубника, Малина',
-        description: 'Освежающий лимонад со вкусом клубники и малины',
-        descriptionKg: 'Клубника жана малина даамындагы муздак лимонад',
-        price: 150,
-        volume: '0.5/0.8 л',
-        image: 'https://www.moi-povar.ru/upload/iblock/162/IMG_1518.jpg',
-        category: 'lemonade'
-    },
-    {
-        id: 59,
-        name: 'Лимонад Дыня желтая Апельсин',
-        nameKg: 'Лимонад Сары дарбыз Апельсин',
-        description: 'Освежающий лимонад со вкусом дыни и апельсина',
-        descriptionKg: 'Дарбыз жана апельсин даамындагы муздак лимонад',
-        price: 150,
-        volume: '0.5/0.8 л',
-        image: 'https://media.ovkuse.ru/images/recipes/a3ade189-9389-40c7-baaa-3ee8de125985/a3ade189-9389-40c7-baaa-3ee8de125985_420_420.webp',
-        category: 'lemonade'
-    },
-    {
-        id: 60,
-        name: 'Лимонад Арбуз, Малина',
-        nameKg: 'Лимонад Дарбыз, Малина',
-        description: 'Освежающий лимонад со вкусом арбуза и малины',
-        descriptionKg: 'Дарбыз жана малина даамындагы муздак лимонад',
-        price: 150,
-        volume: '0.5/0.8 л',
-        image: 'https://static.1000.menu/img/content-v2/09/92/34970/myaso-po-derevenski-v-duxovke-s-kartofelem_1676810570_23_max.jpg',
-        category: 'lemonade'
-    },
-    {
-        id: 61,
-        name: 'Лимонад Бабл Гам, Гренадин',
-        nameKg: 'Лимонад Бабл Гам, Гренадин',
-        description: 'Освежающий лимонад со вкусом бабл гам',
-        descriptionKg: 'Бабл гам даамындагы муздак лимонад',
-        price: 150,
-        volume: '0.5/0.8 л',
-        image: 'https://halal-spb.ru/sites/default/files/styles/large/public/jarkoe-v-gorshochkah.jpg?itok=tzEUT5YJ',
-        category: 'lemonade'
-    },
-    {
-        id: 62,
-        name: 'Лимонад Манго, Маракуйя',
-        nameKg: 'Лимонад Манго, Маракуйя',
-        description: 'Освежающий лимонад со вкусом манго и маракуйи',
-        descriptionKg: 'Манго жана маракуйя даамындагы муздак лимонад',
-        price: 150,
-        volume: '0.5/0.8 л',
-        image: 'https://a-catering.com/image/1.Dostavka/Gorihie/lyulya-kebab-dostavka-shashlyka-na-dom-i-po-spb-v-lenoblati-kejtering.jpg',
-        category: 'lemonade'
-    },
-    {
-        id: 63,
-        name: 'Лимонад Персик, Мандарин',
-        nameKg: 'Лимонад Шабдалы, Мандарин',
-        description: 'Освежающий лимонад со вкусом персика и мандарина',
-        descriptionKg: 'Шабдалы жана мандарин даамындагы муздак лимонад',
-        price: 150,
-        volume: '0.5/0.8 л',
-        image: 'https://yabpoela.net/uploads/posts/2019-12/1576932448_photo_2019-12-21_14-18-13.jpg',
-        category: 'lemonade'
-    },
-    {
-        id: 64,
-        name: 'Лимонад Гренадин, Апельсин',
-        nameKg: 'Лимонад Гренадин, Апельсин',
-        description: 'Освежающий лимонад со вкусом гренадина и апельсина',
-        descriptionKg: 'Гренадин жана апельсин даамындагы муздак лимонад',
-        price: 150,
-        volume: '0.5/0.8 л',
-        image: 'https://ist.say7.info/img0012/35/1235_0166c21_2455_1024.jpg',
-        category: 'lemonade'
-    },
-    {
-        id: 65,
-        name: 'Лимонад Черная смородина',
-        nameKg: 'Лимонад Кара карагат',
-        description: 'Освежающий лимонад со вкусом черной смородины',
-        descriptionKg: 'Кара карагат даамындагы муздак лимонад',
-        price: 150,
-        volume: '0.5/0.8 л',
-        image: 'https://s1.eda.ru/StaticContent/Photos/160915225201/160926225652/p_O.jpg',
-        category: 'lemonade'
-    },
-
-    // ==================== МИЛКШЕЙК ====================
-    {
-        id: 66,
-        name: 'Милкшейк Сливочный',
-        nameKg: 'Милкшейк Каймак',
-        description: 'Нежный молочный коктейль со сливочным вкусом',
-        descriptionKg: 'Каймак даамындагы назик сүт коктейли',
-        price: 150,
-        volume: '0.5/0.8 л',
-        image: 'https://vkusnoff.com/img/recepty/3985/big.webp',
-        category: 'milkshake'
-    },
-    {
-        id: 67,
-        name: 'Милкшейк Клубника Малина',
-        nameKg: 'Милкшейк Клубника Малина',
-        description: 'Молочный коктейль со вкусом клубники и малины',
-        descriptionKg: 'Клубника жана малина даамындагы сүт коктейли',
-        price: 150,
-        volume: '0.5/0.8 л',
-        image: 'https://content2.flowwow-images.com/data/flowers/1000x1000/63/1740545469_46861463.jpg',
-        category: 'milkshake'
-    },
-    {
-        id: 68,
-        name: 'Милкшейк Орео, Орех',
-        nameKg: 'Милкшейк Орео, Жаңгак',
-        description: 'Молочный коктейль с печеньем Орео и орехами',
-        descriptionKg: 'Орео печеньеси жана жаңгак кошулган сүт коктейли',
-        price: 150,
-        volume: '0.5/0.8 л',
-        image: 'https://lifehacker.ru/wp-content/uploads/2024/12/shutterstock_2265339147_1_1734602719-e1734602773944.jpg',
-        category: 'milkshake'
-    },
-    {
-        id: 69,
-        name: 'Милкшейк Банан Карамель',
-        nameKg: 'Милкшейк Банан Карамель',
-        description: 'Молочный коктейль со вкусом банана и карамели',
-        descriptionKg: 'Банан жана карамель даамындагы сүт коктейли',
-        price: 150,
-        volume: '0.5/0.8 л',
-        image: 'https://i.ytimg.com/vi/VqvgACeyDac/maxresdefault.jpg',
-        category: 'milkshake'
-    },
-    {
-        id: 70,
-        name: 'Милкшейк Манго Маракуйя',
-        nameKg: 'Милкшейк Манго Маракуйя',
-        description: 'Молочный коктейль со вкусом манго и маракуйи',
-        descriptionKg: 'Манго жана маракуйя даамындагы сүт коктейли',
-        price: 150,
-        volume: '0.5/0.8 л',
-        image: 'https://lefood.menu/wp-content/uploads/w_images/2023/07/recept-76707-1240x827.jpg',
-        category: 'milkshake'
-    },
-
-    // ==================== ГОРЯЧИЙ КОФЕ ====================
-    {
         id: 71,
+        name: 'Мохито Виноград',
+        nameKg: 'Мохито Виноград',
+        description: 'Холодный чай Мохито с виноградом',
+        descriptionKg: 'Мохито муздак чай виноград менен',
+        price: 230,
+        image: './imagemenu/mojito_grape.jpg',
+        category: 'ice_tea'
+    },
+    {
+        id: 72,
+        name: 'Манго-Маракуйя',
+        nameKg: 'Манго-Маракуйя',
+        description: 'Холодный чай с манго и маракуйей',
+        descriptionKg: 'Манго жана маракуйя кошулган муздак чай',
+        price: 230,
+        image: './imagemenu/mango_passion.jpg',
+        category: 'ice_tea'
+    },
+    {
+        id: 73,
+        name: 'Киви-Яблоко',
+        nameKg: 'Киви-Яблоко',
+        description: 'Холодный чай с киви и яблоком',
+        descriptionKg: 'Киви жана алма кошулган муздак чай',
+        price: 230,
+        image: './imagemenu/kiwi_apple.jpg',
+        category: 'ice_tea'
+    },
+    {
+        id: 74,
+        name: 'Клубника-Персик',
+        nameKg: 'Клубника-Персик',
+        description: 'Холодный чай с клубникой и персиком',
+        descriptionKg: 'Клубника жана персик кошулган муздак чай',
+        price: 280,
+        image: './imagemenu/strawberry_peach.jpg',
+        category: 'ice_tea'
+    },
+    {
+        id: 75,
+        name: 'Виноград-Черника',
+        nameKg: 'Виноград-Черника',
+        description: 'Холодный чай с виноградом и черникой',
+        descriptionKg: 'Виноград жана черника кошулган муздак чай',
+        price: 280,
+        image: './imagemenu/grape_blueberry.jpg',
+        category: 'ice_tea'
+    },
+    {
+        id: 76,
+        name: 'Ягодный',
+        nameKg: 'Жемиштүү',
+        description: 'Ягодный холодный чай',
+        descriptionKg: 'Жемиш муздак чай',
+        price: 280,
+        image: './imagemenu/berry.jpg',
+        category: 'ice_tea'
+    },
+    {
+        id: 77,
+        name: 'Манго-Персик',
+        nameKg: 'Манго-Персик',
+        description: 'Холодный чай с манго и персиком',
+        descriptionKg: 'Манго жана персик кошулган муздак чай',
+        price: 280,
+        image: './imagemenu/mango_peach.jpg',
+        category: 'ice_tea'
+    },
+
+    // ==================== КОФЕ И МАТЧА ====================
+    {
+        id: 78,
         name: 'Капучино',
         nameKg: 'Капучино',
         description: 'Классический капучино',
         descriptionKg: 'Классикалык капучино',
-        prices: { S: 140, M: 160, L: 190 },
-        image: 'https://dikoed.ru/upload/iblock/66c/48245-sup-s-frikadelkami-iz-myasa-olenya.jpg',
+        variants: [
+            { name: 'S', price: 140 },
+            { name: 'M', price: 160 },
+            { name: 'L', price: 190 }
+        ],
+        image: './imagemenu/cappuccino.avif',
         category: 'coffee'
     },
-    {
-        id: 72,
-        name: 'Латте',
-        nameKg: 'Латте',
-        description: 'Классический латте',
-        descriptionKg: 'Классикалык латте',
-        prices: { S: 140, M: 160, L: 190 },
-        image: 'https://images.gastronom.ru/vCS5cZKKC-g5xPVK2mETjj-fuFYL2VZwlkUI_pLiIAQ/pr:recipe-cover-image/g:ce/rs:auto:0:0:0/L2Ntcy9hbGwtaW1hZ2VzLzI4NDA1OTE2LTM4ZDMtNDYwMC1hMjYyLTc1NzFkNjc3MDdlZi5qcGc.webp',
-        category: 'coffee'
-    },
-    {
-        id: 73,
-        name: 'Американо',
-        nameKg: 'Американо',
-        description: 'Классический американо',
-        descriptionKg: 'Классикалык американо',
-        prices: { S: 150, M: 170, L: 200 },
-        image: 'https://www.koolinar.ru/all_image/recipes/156/156110/recipe_a29c73e2-e7c9-49d0-8baf-1695b91e7b7c_large.jpg',
-        category: 'coffee'
-    },
-    {
-        id: 74,
-        name: 'Раф',
-        nameKg: 'Раф',
-        description: 'Нежный кофе раф',
-        descriptionKg: 'Назик раф кофеси',
-        prices: { S: 190, M: 220, L: 240 },
-        image: 'https://cooklikemary.ru/sites/default/files/styles/width_700/public/img_3633_0.jpg?itok=e15Ck_hr',
-        category: 'coffee'
-    },
-    {
-        id: 75,
-        name: 'Какао',
-        nameKg: 'Какао',
-        description: 'Горячее какао',
-        descriptionKg: 'Ысык какао',
-        prices: { S: 120, M: 140, L: 160 },
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKIZSOvy9EXTWC0WL_znrlVYl4iipeuomNeA&s',
-        category: 'coffee'
-    },
-    {
-        id: 76,
-        name: 'Флэт Уайт',
-        nameKg: 'Флэт Уайт',
-        description: 'Кофе флэт уайт',
-        descriptionKg: 'Флэт уайт кофеси',
-        prices: { S: 200, M: 250, L: 280 },
-        image: 'https://img.iamcook.ru/old/upl/recipes/zen/u-9d9f7b406881b1dde4c262f9f84bc279.jpg',
-        category: 'coffee'
-    },
-    {
-        id: 77,
-        name: 'Эспрессо',
-        nameKg: 'Эспрессо',
-        description: 'Крепкий эспрессо',
-        descriptionKg: 'Күчтүү эспрессо',
-        prices: { S: 80, L: 150 },
-        image: 'https://s1.webspoon.ru/receipts/2013/7/8738/orig_8738_0_xxl.jpg',
-        category: 'coffee'
-    },
-    {
-        id: 78,
-        name: 'Сиропы',
-        nameKg: 'Сироптор',
-        description: 'Лаванда, яблочный пирог, крем брюле, карамель, соленая карамель, ваниль, попкорн, фундук, кокос',
-        descriptionKg: 'Лаванда, алма пирогу, крем брюле, карамель, туздуу карамель, ваниль, попкорн, фундук, кокос',
-        price: 20,
-        image: 'https://cdn.smt.bz/uploads/media/photo/2225664/%D0%BB%D0%B0%D0%B3%D0%BC%D0%B0%D0%BD_%D0%B6%D0%B0%D1%80%D0%B5%D0%BD%D1%8B%D0%B9.webp',
-        category: 'coffee',
-        addon: true
-    },
-
-    // ==================== МАТЧА ====================
     {
         id: 79,
-        name: 'Матча Зеленая',
-        nameKg: 'Жашыл Матча',
-        description: 'Зеленый чай матча',
-        descriptionKg: 'Жашыл матча чайы',
-        prices: { S: 160, M: 180, L: 200 },
-        image: 'https://zira.uz/wp-content/uploads/2023/09/gulyash.jpg',
-        category: 'matcha'
+        name: 'Латте',
+        nameKg: 'Латте',
+        description: 'Кофе латте',
+        descriptionKg: 'Латте кофе',
+        variants: [
+            { name: 'S', price: 140 },
+            { name: 'M', price: 160 },
+            { name: 'L', price: 190 }
+        ],
+        image: './imagemenu/latte.jpg',
+        category: 'coffee'
     },
     {
         id: 80,
-        name: 'Матча Голубая',
-        nameKg: 'Көк Матча',
-        description: 'Голубой чай матча',
-        descriptionKg: 'Көк матча чайы',
-        prices: { S: 160, M: 180, L: 200 },
-        image: 'https://i.ytimg.com/vi/VqvgACeyDac/maxresdefault.jpg',
-        category: 'matcha'
+        name: 'Американо',
+        nameKg: 'Американо',
+        description: 'Черный кофе американо',
+        descriptionKg: 'Кара американо кофе',
+        variants: [
+            { name: 'S', price: 150 },
+            { name: 'M', price: 170 },
+            { name: 'L', price: 200 }
+        ],
+        image: './imagemenu/americano.jpg',
+        category: 'coffee'
     },
     {
         id: 81,
-        name: 'Матча Манго',
-        nameKg: 'Манго Матча',
-        description: 'Чай матча со вкусом манго',
-        descriptionKg: 'Манго даамындагы матча чайы',
-        prices: { S: 170, M: 190, L: 210 },
-        image: 'https://static.1000.menu/img/content-v2/09/92/34970/myaso-po-derevenski-v-duxovke-s-kartofelem_1676810570_23_max.jpg',
-        category: 'matcha'
+        name: 'Раф',
+        nameKg: 'Раф',
+        description: 'Кофе раф',
+        descriptionKg: 'Раф кофе',
+        variants: [
+            { name: 'S', price: 190 },
+            { name: 'M', price: 220 },
+            { name: 'L', price: 240 }
+        ],
+        image: './imagemenu/raf.png',
+        category: 'coffee'
     },
-
-    // ==================== АЙС КОФЕ ====================
     {
         id: 82,
-        name: 'Айс Капучино',
-        nameKg: 'Айс Капучино',
-        description: 'Холодный капучино',
-        descriptionKg: 'Муздак капучино',
-        prices: { M: 190, L: 220 },
-        image: 'https://finecooking.ru/images/recipe/steyki-foreli-zapechennye-v-duhovke/photo/960w.jpg',
-        category: 'ice_coffee'
+        name: 'Матча',
+        nameKg: 'Матча',
+        description: 'Зеленая или голубая матча',
+        descriptionKg: 'Жашыл же көк матча',
+        variants: [
+            { name: 'S', price: 160 },
+            { name: 'M', price: 180 },
+            { name: 'L', price: 200 }
+        ],
+        image: './imagemenu/matcha.png',
+        category: 'coffee'
     },
     {
         id: 83,
-        name: 'Айс Латте',
-        nameKg: 'Айс Латте',
-        description: 'Холодный латте',
-        descriptionKg: 'Муздак латте',
-        prices: { M: 190, L: 220 },
-        image: 'https://yabpoela.net/uploads/posts/2019-12/1576932448_photo_2019-12-21_14-18-13.jpg',
-        category: 'ice_coffee'
+        name: 'Айс Кофе',
+        nameKg: 'Айс Кофе',
+        description: 'Холодный кофе',
+        descriptionKg: 'Муздак кофе',
+        variants: [
+            { name: 'S', price: 190 },
+            { name: 'M', price: 210 },
+            { name: 'L', price: 260 }
+        ],
+        image: './imagemenu/ice_coffee.jpg',
+        category: 'coffee'
     },
+
+    // ==================== ЛИМОНАДЫ И МИЛКШЕЙКИ ====================
     {
         id: 84,
-        name: 'Айс Американо',
-        nameKg: 'Айс Американо',
-        description: 'Холодный американо',
-        descriptionKg: 'Муздак американо',
-        prices: { M: 200, L: 230 },
-        image: 'https://www.koolinar.ru/all_image/recipes/157/157915/recipe_9f002738-7831-484c-ad0a-7294e58d8cba_w450.webp',
-        category: 'ice_coffee'
+        name: 'Лимонады',
+        nameKg: 'Лимонаддар',
+        description: 'Различные лимонады',
+        descriptionKg: 'Ар кандай лимонаддар',
+        variants: [
+            { name: 'Мохито', price: 150 },
+            { name: 'Дыня-Тархун', price: 150 },
+            { name: 'Клубника-Малина', price: 150 },
+            { name: 'Арбуз-Малина', price: 150 },
+            { name: 'Бабл Гам', price: 150 }
+        ],
+        image: './imagemenu/lemonades.png',
+        category: 'lemonade'
     },
     {
         id: 85,
-        name: 'Айс Раф',
-        nameKg: 'Айс Раф',
-        description: 'Холодный раф',
-        descriptionKg: 'Муздак раф',
-        prices: { M: 240, L: 260 },
-        image: 'https://lifehacker.ru/wp-content/uploads/2024/12/shutterstock_2265339147_1_1734602719-e1734602773944.jpg',
-        category: 'ice_coffee'
-    },
-    {
-        id: 86,
-        name: 'Айс Матча',
-        nameKg: 'Айс Матча',
-        description: 'Холодный чай матча',
-        descriptionKg: 'Муздак матча чайы',
-        prices: { M: 180, L: 230 },
-        image: 'https://bigasia.ru/wp-content/uploads/2023/04/2435c715734d0d295dc9c342ccf20ab6.jpg',
-        category: 'ice_coffee'
-    },
-    {
-        id: 87,
-        name: 'Айс Матча Клубника',
-        nameKg: 'Айс Матча Клубника',
-        description: 'Холодный чай матча со вкусом клубники',
-        descriptionKg: 'Клубника даамындагы муздак матча чайы',
-        prices: { M: 190, L: 240 },
-        image: 'https://media.ovkuse.ru/images/recipes/a3ade189-9389-40c7-baaa-3ee8de125985/a3ade189-9389-40c7-baaa-3ee8de125985_420_420.webp',
-        category: 'ice_coffee'
-    },
-    {
-        id: 88,
-        name: 'Айс Матча Манго',
-        nameKg: 'Айс Матча Манго',
-        description: 'Холодный чай матча со вкусом манго',
-        descriptionKg: 'Манго даамындагы муздак матча чайы',
-        prices: { M: 190, L: 240 },
-        image: 'https://halal-spb.ru/sites/default/files/styles/large/public/jarkoe-v-gorshochkah.jpg?itok=tzEUT5YJ',
-        category: 'ice_coffee'
+        name: 'Милкшейки',
+        nameKg: 'Милкшейки',
+        description: 'Различные милкшейки',
+        descriptionKg: 'Ар кандай милкшейки',
+        variants: [
+            { name: 'Сливочный', price: 220 },
+            { name: 'Клубника-Малина', price: 220 },
+            { name: 'Орео-Орех', price: 220 },
+            { name: 'Банан-Карамель', price: 220 },
+            { name: 'Манго-Маракуйя', price: 220 }
+        ],
+        image: './imagemenu/milkshakes.avif',
+        category: 'lemonade'
     },
 
     // ==================== ЧАЙ ====================
     {
-        id: 89,
+        id: 86,
         name: 'Черный чай',
         nameKg: 'Кара чай',
         description: 'Классический черный чай',
         descriptionKg: 'Классикалык кара чай',
         price: 40,
-        image: 'https://s1.eda.ru/StaticContent/Photos/160915225201/160926225652/p_O.jpg',
+        image: './imagemenu/black_tea.avif',
         category: 'tea'
     },
     {
-        id: 90,
+        id: 87,
         name: 'Зеленый чай',
         nameKg: 'Жашыл чай',
-        description: 'Классический зеленый чай',
-        descriptionKg: 'Классикалык жашыл чай',
+        description: 'Ароматный зеленый чай',
+        descriptionKg: 'Жытыр жашыл чай',
         price: 40,
-        image: 'https://www.povarenok.ru/data/cache/2023jan/21/55/3033845_65334-710x550x.jpg',
+        image: './imagemenu/green_tea.avif',
         category: 'tea'
     },
     {
-        id: 91,
-        name: 'Чай с бергамотом',
-        nameKg: 'Бергамот чай',
-        description: 'Чай с бергамотом',
-        descriptionKg: 'Бергамот кошулган чай',
-        price: 60,
-        image: 'https://ist.say7.info/img0012/35/1235_0166c21_2455_1024.jpg',
-        category: 'tea'
-    },
-    {
-        id: 92,
+        id: 88,
         name: 'Жасмин',
         nameKg: 'Жасмин',
         description: 'Чай с жасмином',
         descriptionKg: 'Жасмин кошулган чай',
         price: 60,
-        image: 'https://lafoy.ru/photo_l/foto-4456-2.jpg',
+        image: './imagemenu/jasmine_tea.jpg',
         category: 'tea'
     },
     {
-        id: 93,
+        id: 89,
         name: 'Молочный улун',
         nameKg: 'Сүт улун',
-        description: 'Чай молочный улун',
-        descriptionKg: 'Сүт улун чайы',
+        description: 'Молочный улун чай',
+        descriptionKg: 'Сүт улун чай',
         price: 60,
-        image: 'https://a-catering.com/image/1.Dostavka/Gorihie/lyulya-kebab-dostavka-shashlyka-na-dom-i-po-spb-v-lenoblati-kejtering.jpg',
+        image: './imagemenu/milk_oolong.webp',
         category: 'tea'
     },
     {
-        id: 94,
-        name: 'Каркаде',
-        nameKg: 'Каркаде',
-        description: 'Чай каркаде',
-        descriptionKg: 'Каркаде чайы',
-        price: 60,
-        image: 'https://i.ytimg.com/vi/sGjV5ER10ys/sddefault.jpg',
-        category: 'tea'
-    },
-    {
-        id: 95,
-        name: 'Облепиховый чай',
-        nameKg: 'Чычырканак чай',
+        id: 90,
+        name: 'Облепиховый',
+        nameKg: 'Облепиховый',
         description: 'Чай с облепихой',
-        descriptionKg: 'Чычырканак кошулган чай',
+        descriptionKg: 'Облепиха кошулган чай',
         price: 150,
-        image: 'https://www.russianfood.com/dycontent/images_upl/68/big_67797.jpg',
+        image: './imagemenu/sea_buckthorn.jpg',
         category: 'tea'
     },
     {
-        id: 96,
-        name: 'Ягодный чай',
-        nameKg: 'Жидек чай',
-        description: 'Чай со вкусом ягод',
-        descriptionKg: 'Жидек даамындагы чай',
+        id: 91,
+        name: 'Ташкентский',
+        nameKg: 'Ташкентский',
+        description: 'Ташкентский чай',
+        descriptionKg: 'Ташкент чайы',
         price: 150,
-        image: 'https://img.iamcook.ru/old/upl/recipes/cat/u4142-10b7c9c0972f7a6486ec930a56c01777.jpg',
+        image: './imagemenu/tashkent.jpg',
         category: 'tea'
     },
     {
-        id: 97,
-        name: 'Цитрусовый чай',
-        nameKg: 'Цитрус чай',
-        description: 'Чай с цитрусовыми',
-        descriptionKg: 'Цитрус кошулган чай',
+        id: 92,
+        name: 'Пряный',
+        nameKg: 'Пряный',
+        description: 'Пряный чай',
+        descriptionKg: 'Пряный чай',
         price: 150,
-        image: 'https://img2.goodfon.ru/original/5616x3744/0/63/stol-zavarnik-chay-napitok.jpg',
+        image: './imagemenu/spicy_tea.jpg',
         category: 'tea'
-    },
-    {
-        id: 98,
-        name: 'Лимонный, Мята',
-        nameKg: 'Лимон, Жалбыз',
-        description: 'Чай с лимоном и мятой',
-        descriptionKg: 'Лимон жана жалбыз кошулган чай',
-        price: 150,
-        image: 'https://zira.uz/wp-content/uploads/2022/06/shaurma-18.jpg',
-        category: 'tea'
-    },
-    {
-        id: 99,
-        name: 'Пряный чай',
-        nameKg: 'Татымал чай',
-        description: 'Чай с пряностями',
-        descriptionKg: 'Татымалдар кошулган чай',
-        price: 150,
-        image: 'https://foodmood.ru/upload/iblock/bfe/bfe5b51ce6ea8a5f17b59c153ac3fcf9.jpeg',
-        category: 'tea'
-    },
-    {
-        id: 100,
-        name: 'Ташкент чай',
-        nameKg: 'Ташкент чай',
-        description: 'Чай по-ташкентски',
-        descriptionKg: 'Ташкенттик чай',
-        price: 150,
-        image: 'https://cdn.tveda.ru/thumbs/3cc/3ccfd856d12bcfb474a1b37e886777b9/08be2c4d446d23e23ba82d5483e2f396.jpg',
-        category: 'tea'
-    },
-
-    // ==================== СОУСЫ ====================
-    {
-        id: 101,
-        name: 'Соус',
-        nameKg: 'Соус',
-        description: 'Сырный, чесночный, барбекю, кетчуп',
-        descriptionKg: 'Сыр, сарымсак, барбекю, кетчуп',
-        price: 30,
-        image: 'https://prostokvashino.ru/upload/resize_cache/iblock/74f/800_800_0/74fe90dd6ef5f047dcadff513c8d75d7.jpg',
-        category: 'sauces'
-    },
-
-    // ==================== СЕТЫ ====================
-    {
-        id: 102,
-        name: 'Сет №1 (Филадельфия с тамаго, Чиз ролл, Филадельфия с курицей)',
-        description: 'Филадельфия с тамаго, Чиз ролл, Филадельфия с курицей',
-        price: 1099,
-        category: 'sets',
-        image: 'https://via.placeholder.com/400x250?text=Сет+1'
-    },
-    {
-        id: 103,
-        name: 'Сет №2 (Калифорния с лососем, Калифорния с креветкой, Калифорния с тамаго, Калифорния с курицей)',
-        description: 'Калифорния с лососем, Калифорния с креветкой, Калифорния с тамаго, Калифорния с курицей',
-        price: 1199,
-        category: 'sets',
-        image: 'https://via.placeholder.com/400x250?text=Сет+2'
-    },
-    {
-        id: 104,
-        name: 'Сет №3 (Филадельфия, Чиз Хот с курицей, Мини с лососем, Эби с огурцом)',
-        description: 'Филадельфия, Чиз Хот с курицей, Мини с лососем, Эби с огурцом',
-        price: 1299,
-        category: 'sets',
-        image: 'https://via.placeholder.com/400x250?text=Сет+3'
-    },
-    {
-        id: 105,
-        name: 'Сет №4 (Калифорния с креветкой, Хот Чиз с курицей, Яки с тунцом, Япония ролл)',
-        description: 'Калифорния с креветкой, Хот Чиз с курицей, Яки с тунцом, Япония ролл',
-        price: 1399,
-        category: 'sets',
-        image: 'https://via.placeholder.com/400x250?text=Сет+4'
-    },
-    {
-        id: 106,
-        name: 'Сет №5 (Горячий с тунцом, Темпура с курицей, Спайси с лососем, Шарики с курицей и лососем)',
-        description: 'Горячий с тунцом, Темпура с курицей, Спайси с лососем, Шарики с курицей и лососем',
-        price: 1199,
-        category: 'sets',
-        image: 'https://via.placeholder.com/400x250?text=Сет+5'
-    },
-    {
-        id: 107,
-        name: 'Сет №6 (Филадельфия гриль, Умани с курицей, Салмон с лососем, Чиз хот с креветкой)',
-        description: 'Филадельфия гриль, Умани с курицей, Салмон с лососем, Чиз хот с креветкой',
-        price: 1499,
-        category: 'sets',
-        image: 'https://via.placeholder.com/400x250?text=Сет+6'
-    },
-    {
-        id: 108,
-        name: 'Сет №7 (Кунжут с тамаго, Эби ролл, Филадельфия, Чиз хот с курицей, Калифорния в кунжуте с лососем, Мини маки с креветкой)',
-        description: 'Кунжут с тамаго, Эби ролл, Филадельфия, Чиз хот с курицей, Калифорния в кунжуте с лососем, Мини маки с креветкой',
-        price: 1599,
-        category: 'sets',
-        image: 'https://via.placeholder.com/400x250?text=Сет+7'
-    },
-    {
-        id: 109,
-        name: 'Сет №8 (Мини с огурцом, Бонита с тунцом, Филадельфия грин с лососем, Калифорния с креветкой)',
-        description: 'Мини с огурцом, Бонита с тунцом, Филадельфия грин с лососем, Калифорния с креветкой',
-        price: 1199,
-        category: 'sets',
-        image: 'https://via.placeholder.com/400x250?text=Сет+8'
-    },
-    {
-        id: 110,
-        name: 'Сет №10 (Мини маки с тунцом, Кунжутный с тамаго, Филадельфия, Фила Грин с лососем, Яки с лососем, Чиз Хот с креветкой)',
-        description: 'Мини маки с тунцом, Кунжутный с тамаго, Филадельфия, Фила Грин с лососем, Яки с лососем, Чиз Хот с креветкой',
-        price: 1699,
-        category: 'sets',
-        image: 'https://via.placeholder.com/400x250?text=Сет+10'
-    },
-    {
-        id: 111,
-        name: 'Сет №11 (Филадельфия, Хот Чиз с курицей, Кунжут с тунцом, Япония ролл, Мини маки с креветкой)',
-        description: 'Филадельфия, Хот Чиз с курицей, Кунжут с тунцом, Япония ролл, Мини маки с креветкой',
-        price: 1499,
-        category: 'sets',
-        image: 'https://via.placeholder.com/400x250?text=Сет+11'
-    },
-    {
-        id: 112,
-        name: 'Сет №12 (Калифорния с лососем, Калифорния с курицей, Яки с тунцом и лососем, Бонита с креветкой, Кунжут с лососем, Филадельфия, Хот Чиз с тунцом)',
-        description: 'Калифорния с лососем, Калифорния с курицей, Яки с тунцом и лососем, Бонита с креветкой, Кунжут с лососем, Филадельфия, Хот Чиз с тунцом',
-        price: 2699,
-        category: 'sets',
-        image: 'https://via.placeholder.com/400x250?text=Сет+12'
-    },
-    {
-        id: 113,
-        name: 'Сет №13 (Филадельфия гриль, Умани с курицей, Салмон с лососем, Чиз хот с креветкой)',
-        description: 'Филадельфия гриль, Умани с курицей, Салмон с лососем, Чиз хот с креветкой',
-        price: 1499,
-        category: 'sets',
-        image: 'https://via.placeholder.com/400x250?text=Сет+13'
-    },
-
-    // ==================== ХОЛОДНЫЕ РОЛЛЫ ====================
-    {
-        id: 114,
-        name: 'Канада',
-        description: 'Холодный ролл Канада',
-        price: 440,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Канада'
-    },
-    {
-        id: 115,
-        name: 'Хокайдо',
-        description: 'Холодный ролл Хокайдо',
-        price: 430,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Хокайдо'
-    },
-    {
-        id: 116,
-        name: 'Магуро',
-        description: 'Холодный ролл Магуро',
-        price: 450,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Магуро'
-    },
-    {
-        id: 117,
-        name: 'Мидори',
-        description: 'Холодный ролл Мидори',
-        price: 480,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Мидори'
-    },
-    {
-        id: 118,
-        name: 'Филадельфия (ролл)',
-        description: 'Холодный ролл Филадельфия',
-        price: 430,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Филадельфия'
-    },
-    {
-        id: 119,
-        name: 'Эби Дабл',
-        description: 'Холодный ролл Эби Дабл',
-        price: 480,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Эби+Дабл'
-    },
-    {
-        id: 120,
-        name: 'Яки ролл (Лосось)',
-        description: 'Яки ролл с лососем',
-        price: 420,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Яки+Лосось'
-    },
-    {
-        id: 121,
-        name: 'Яки ролл (Креветка)',
-        description: 'Яки ролл с креветкой',
-        price: 410,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Яки+Креветка'
-    },
-    {
-        id: 122,
-        name: 'Яки ролл (Тунец)',
-        description: 'Яки ролл с тунцом',
-        price: 400,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Яки+Тунец'
-    },
-    {
-        id: 123,
-        name: 'Яки ролл (Курица)',
-        description: 'Яки ролл с курицей',
-        price: 380,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Яки+Курица'
-    },
-    {
-        id: 124,
-        name: 'Фила Лайт (Угорь)',
-        description: 'Фила Лайт с угрём',
-        price: 460,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Фила+Лайт+Угорь'
-    },
-    {
-        id: 125,
-        name: 'Фила Лайт (Креветка)',
-        description: 'Фила Лайт с креветкой',
-        price: 450,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Фила+Лайт+Креветка'
-    },
-    {
-        id: 126,
-        name: 'Фила Лайт (Тунец)',
-        description: 'Фила Лайт с тунцом',
-        price: 450,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Фила+Лайт+Тунец'
-    },
-    {
-        id: 127,
-        name: 'Фила Лайт (Курица)',
-        description: 'Фила Лайт с курицей',
-        price: 440,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Фила+Лайт+Курица'
-    },
-    {
-        id: 128,
-        name: 'Грин ролл (Лосось)',
-        description: 'Грин ролл с лососем',
-        price: 400,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Грин+Лосось'
-    },
-    {
-        id: 129,
-        name: 'Грин ролл (Креветка)',
-        description: 'Грин ролл с креветкой',
-        price: 420,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Грин+Креветка'
-    },
-    {
-        id: 130,
-        name: 'Грин ролл (Тунец)',
-        description: 'Грин ролл с тунцом',
-        price: 390,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Грин+Тунец'
-    },
-    {
-        id: 131,
-        name: 'Грин ролл (Курица)',
-        description: 'Грин ролл с курицей',
-        price: 380,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Грин+Курица'
-    },
-    {
-        id: 132,
-        name: 'Калифорния (Лосось)',
-        description: 'Калифорния с лососем',
-        price: 400,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Калифорния+Лосось'
-    },
-    {
-        id: 133,
-        name: 'Калифорния (Креветка)',
-        description: 'Калифорния с креветкой',
-        price: 420,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Калифорния+Креветка'
-    },
-    {
-        id: 134,
-        name: 'Калифорния (Тунец)',
-        description: 'Калифорния с тунцом',
-        price: 400,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Калифорния+Тунец'
-    },
-    {
-        id: 135,
-        name: 'Калифорния (Курица)',
-        description: 'Калифорния с курицей',
-        price: 380,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Калифорния+Курица'
-    },
-    {
-        id: 136,
-        name: 'Мини ролл (Лосось)',
-        description: 'Мини ролл с лососем',
-        price: 200,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Мини+Лосось'
-    },
-    {
-        id: 137,
-        name: 'Мини ролл (Креветка)',
-        description: 'Мини ролл с креветкой',
-        price: 220,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Мини+Креветка'
-    },
-    {
-        id: 138,
-        name: 'Мини ролл (Тунец)',
-        description: 'Мини ролл с тунцом',
-        price: 180,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Мини+Тунец'
-    },
-    {
-        id: 139,
-        name: 'Мини ролл (Курица)',
-        description: 'Мини ролл с курицей',
-        price: 160,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Мини+Курица'
-    },
-    {
-        id: 140,
-        name: 'Мини ролл (Огурец)',
-        description: 'Мини ролл с огурцом',
-        price: 140,
-        category: 'rolls',
-        image: 'https://via.placeholder.com/400x250?text=Мини+Огурец'
     }
 ];
 
@@ -1432,11 +1140,9 @@ const translations = {
         'remove': 'Удалить',
         'details': 'Подробнее',
         'filter-all': 'Все',
-        'filter-first': 'Первые блюда',
-        'filter-fastfood': 'Фаст Фуд',
-        'filter-rolls': 'Суши и Роллы',
-        'filter-sets': 'Сеты',
-        'filter-wok': 'WOK (Соба)',
+        'filter-sushi-rolls': 'Суши и Роллы',
+        'filter-fastfood': 'Фастфуд',
+        'filter-bubble-tea': 'Бабл Ти',
         'filter-drinks': 'Напитки',
         'filter-second': 'Вторые блюда',
         'filter-special': 'Заказные',
@@ -1497,11 +1203,9 @@ const translations = {
         'remove': 'Өчүрүү',
         'details': 'Кененирээк',
         'filter-all': 'Баары',
-        'filter-first': 'Биринчи тамактар',
-        'filter-fastfood': 'Фаст Фуд',
-        'filter-rolls': 'Суши жана Роллы',
-        'filter-sets': 'Сеттер',
-        'filter-wok': 'WOK (Соба)',
+        'filter-sushi-rolls': 'Суши жана Роллы',
+        'filter-fastfood': 'Фастфуд',
+        'filter-bubble-tea': 'Бабл Ти',
         'filter-drinks': 'Суусундуктар',
         'filter-second': 'Экинчи тамактар',
         'filter-special': 'Заказдык',
@@ -1558,14 +1262,10 @@ const translations = {
         'remove': 'Remove',
         'details': 'Details',
         'filter-all': 'All',
-        'filter-first': 'Soups',
-        'filter-second': 'Main dishes',
-        'filter-special': 'Special',
-        'filter-shashlik': 'Shashlik',
-        'filter-salad': 'Salads',
-        'filter-dessert': 'Desserts',
-        'filter-drink': 'Drinks',
-        'filter-fastfood': 'Fast-Food',
+        'filter-sushi-rolls': 'Sushi and Rolls',
+        'filter-fastfood': 'Fastfood',
+        'filter-bubble-tea': 'Bubble Tea',
+        'filter-drinks': 'Drinks',
         'dish-ingredients': 'Ingredients:',
         'reviews-title': 'Reviews',
         'review-form-title': 'Leave a review',
@@ -2586,6 +2286,14 @@ function initEventListeners() {
         });
     }
 
+    // Закрытие модального окна выбора варианта
+    const closeVariantModal = document.getElementById('closeVariantModal');
+    if (closeVariantModal) {
+        closeVariantModal.addEventListener('click', () => {
+            document.getElementById('variantModal').classList.remove('active');
+        });
+    }
+
     // Кнопка добавления в корзину из деталей
     const addToCartFromDetails = document.getElementById('addToCartFromDetails');
     if (addToCartFromDetails) {
@@ -2647,15 +2355,20 @@ function renderMenu() {
     menuGrid.innerHTML = '';
 
     // Фильтруем блюда по категории
-    // Support composite category 'fastfood' which groups quick eat items
     let filteredItems;
     if (currentCategory === 'all') {
         filteredItems = menuData;
+    } else if (currentCategory === 'sushi_rolls') {
+        const sushiCategories = ['sets', 'cold_rolls', 'baked_rolls'];
+        filteredItems = menuData.filter(item => sushiCategories.includes(item.category));
     } else if (currentCategory === 'fastfood') {
-        const fastCategories = ['pizza', 'wings', 'nuggets', 'potato', 'wok', 'sets'];
+        const fastCategories = ['wings', 'nuggets', 'pizza', 'potato', 'wok', 'soups'];
         filteredItems = menuData.filter(item => fastCategories.includes(item.category));
+    } else if (currentCategory === 'bubble_tea') {
+        const bubbleCategories = ['bubble_tea', 'ice_tea'];
+        filteredItems = menuData.filter(item => bubbleCategories.includes(item.category));
     } else if (currentCategory === 'drinks') {
-        const drinkCategories = ['bubble_tea', 'ice_tea', 'lemonade', 'milkshake', 'coffee', 'matcha', 'ice_coffee', 'tea'];
+        const drinkCategories = ['coffee', 'lemonade', 'tea'];
         filteredItems = menuData.filter(item => drinkCategories.includes(item.category));
     } else {
         filteredItems = menuData.filter(item => item.category === currentCategory);
@@ -2690,7 +2403,15 @@ function createMenuCard(item) {
 
     const name = currentLang === 'ru' ? item.name : item.nameKg;
     const description = currentLang === 'ru' ? item.description : item.descriptionKg;
-    const price = item.price2 ? `${item.price} / ${item.price2}` : item.price;
+    let price;
+    if (item.variants && item.variants.length > 0) {
+        const prices = item.variants.map(v => v.price);
+        const minPrice = Math.min(...prices);
+        const maxPrice = Math.max(...prices);
+        price = minPrice === maxPrice ? `${minPrice}` : `${minPrice} - ${maxPrice}`;
+    } else {
+        price = item.price2 ? `${item.price} / ${item.price2}` : item.price;
+    }
 
     const cartItem = cart.find(ci => ci.id === item.id);
     const quantity = cartItem ? cartItem.quantity : 0;
@@ -2764,9 +2485,61 @@ function createMenuCard(item) {
 // ============================================
 // Работа с корзиной
 // ============================================
+function openVariantModal(item) {
+    const modal = document.getElementById('variantModal');
+    const title = document.getElementById('variantTitle');
+    const options = document.getElementById('variantOptions');
+
+    title.textContent = currentLang === 'ru' ? `Выберите вариант для ${item.name}` : `Тандоо ${item.name} үчүн вариант`;
+    options.innerHTML = '';
+
+    item.variants.forEach(variant => {
+        const option = document.createElement('button');
+        option.className = 'variant-option';
+        option.textContent = `${variant.name} - ${variant.price} сом`;
+        option.addEventListener('click', () => {
+            addToCartWithVariant(item, variant);
+            modal.classList.remove('active');
+        });
+        options.appendChild(option);
+    });
+
+    modal.classList.add('active');
+}
+
+function addToCartWithVariant(item, variant) {
+    const cartItemId = `${item.id}-${variant.name}`;
+    const existingItem = cart.find(ci => ci.id === cartItemId);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: cartItemId,
+            name: `${currentLang === 'ru' ? item.name : item.nameKg} (${variant.name})`,
+            price: variant.price,
+            image: item.image,
+            quantity: 1
+        });
+    }
+
+    saveCart();
+    updateCartUI();
+    renderMenu();
+
+    const addedLabel = translations[currentLang] && translations[currentLang]['added'] ? translations[currentLang]['added'] : (currentLang === 'ru' ? 'Добавлено:' : 'Кошулду:');
+    showToast(`${addedLabel} ${currentLang === 'ru' ? item.name : item.nameKg} (${variant.name})`);
+}
+
 function addToCart(itemId) {
     const item = menuData.find(i => i.id === itemId);
     if (!item) return;
+
+    if (item.variants && item.variants.length > 0) {
+        // Открываем модальное окно для выбора варианта
+        openVariantModal(item);
+        return;
+    }
 
     // Найдём кнопку, если она есть (карточка меню)
     const btn = document.querySelector(`button.btn-add-cart[data-item-id="${itemId}"]`);
