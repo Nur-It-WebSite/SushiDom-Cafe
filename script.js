@@ -17,7 +17,7 @@ const menuData = [
         description: 'Калифорния (лосось, креветка, тамаго, курица)',
         descriptionKg: 'Калифорния (лосось, креветка, тамаго, тоок)',
         price: 1199,
-        image: './imagemenu/set2.jpg',
+        image: './imagemenu/set2.webp',
         category: 'sets'
     },
     {
@@ -27,7 +27,7 @@ const menuData = [
         description: 'Филадельфия, Чиз хот с курицей, Мини с лососем, Эби с огурцом',
         descriptionKg: 'Филадельфия, Тоок менен Чиз хот, Лосось менен Мини, Огурц менен Эби',
         price: 1299,
-        image: './imagemenu/set3.jpg',
+        image: './imagemenu/set3.webp',
         category: 'sets'
     },
     {
@@ -150,7 +150,7 @@ const menuData = [
             { name: 'Тунец', price: 400 },
             { name: 'Курица', price: 380 }
         ],
-        image: './imagemenu/yaki_roll.jpg',
+        image: './imagemenu/yaki_roll.avif',
         category: 'cold_rolls'
     },
     {
@@ -166,7 +166,7 @@ const menuData = [
             { name: 'Курица', price: 400 },
             { name: 'Угорь', price: 460 }
         ],
-        image: './imagemenu/phila_light.jpg',
+        image: './imagemenu/phila_light.avif',
         category: 'cold_rolls'
     },
     {
@@ -196,7 +196,7 @@ const menuData = [
             { name: 'Тунец', price: 400 },
             { name: 'Курица', price: 380 }
         ],
-        image: './imagemenu/california.jpg',
+        image: './imagemenu/california.avif',
         category: 'cold_rolls'
     },
     // Мини роллы
@@ -249,7 +249,7 @@ const menuData = [
             { name: 'Тунец', price: 380 },
             { name: 'Курица', price: 350 }
         ],
-        image: './imagemenu/spicy_roll.jpg',
+        image: './imagemenu/spicy_roll.png',
         category: 'baked_rolls'
     },
     {
@@ -264,7 +264,7 @@ const menuData = [
             { name: 'Тунец', price: 400 },
             { name: 'Курица', price: 380 }
         ],
-        image: './imagemenu/tempura_roll.jpg',
+        image: './imagemenu/tempura_roll.jpeg',
         category: 'baked_rolls'
     },
     {
@@ -279,7 +279,7 @@ const menuData = [
             { name: 'Тунец', price: 400 },
             { name: 'Курица', price: 340 }
         ],
-        image: './imagemenu/cheese_hot.jpg',
+        image: './imagemenu/cheese_hot.avif',
         category: 'baked_rolls'
     },
     {
@@ -337,7 +337,7 @@ const menuData = [
         description: 'Острые куриные крылышки',
         descriptionKg: 'Ачуу тоок канаттары',
         price: 240,
-        image: './imagemenu/wings6.jpg',
+        image: './imagemenu/wings6.webp',
         category: 'wings'
     },
     {
@@ -347,7 +347,7 @@ const menuData = [
         description: 'Острые куриные крылышки',
         descriptionKg: 'Ачуу тоок канаттары',
         price: 400,
-        image: './imagemenu/wings10.jpg',
+        image: './imagemenu/wings10.png',
         category: 'wings'
     },
     {
@@ -357,7 +357,7 @@ const menuData = [
         description: 'Острые куриные крылышки',
         descriptionKg: 'Ачуу тоок канаттары',
         price: 600,
-        image: './imagemenu/wings15.jpg',
+        image: './imagemenu/wings15.webp',
         category: 'wings'
     },
     {
@@ -367,7 +367,7 @@ const menuData = [
         description: 'Острые куриные крылышки',
         descriptionKg: 'Ачуу тоок канаттары',
         price: 880,
-        image: './imagemenu/wings22.jpg',
+        image: './imagemenu/wings22.webp',
         category: 'wings'
     },
     {
@@ -387,7 +387,7 @@ const menuData = [
         description: 'Хрустящие куриные наггетсы',
         descriptionKg: 'Кытырак тоок наггетстери',
         price: 250,
-        image: './imagemenu/nuggets10.jpg',
+        image: './imagemenu/uggets10.jpg',
         category: 'nuggets'
     },
     {
@@ -397,7 +397,7 @@ const menuData = [
         description: 'Хрустящие куриные наггетсы',
         descriptionKg: 'Кытырак тоок наггетстери',
         price: 350,
-        image: './imagemenu/nuggets15.jpg',
+        image: './imagemenu/uggets15.png',
         category: 'nuggets'
     },
     {
@@ -407,7 +407,7 @@ const menuData = [
         description: 'Хрустящие куриные наггетсы',
         descriptionKg: 'Кытырак тоок наггетстери',
         price: 450,
-        image: './imagemenu/nuggets20.jpg',
+        image: './imagemenu/nuggets20.webp',
         category: 'nuggets'
     },
     {
@@ -417,7 +417,7 @@ const menuData = [
         description: 'Хрустящие куриные наггетсы',
         descriptionKg: 'Кытырак тоок наггетстери',
         price: 660,
-        image: './imagemenu/nuggets30.jpg',
+        image: './imagemenu/uggets30.jpg',
         category: 'nuggets'
     },
 
@@ -429,7 +429,7 @@ const menuData = [
         description: 'Классическая пицца с томатным соусом и моцареллой',
         descriptionKg: 'Классикалык помидор соусу жана моцарелла менен',
         price: 450,
-        image: './imagemenu/margarita.jpg',
+        image:'./imagemenu/margarita.jpeg',
         category: 'pizza'
     },
     {
@@ -439,7 +439,7 @@ const menuData = [
         description: 'Пицца с пепперони или детская',
         descriptionKg: 'Пепперони же балдар пиццасы',
         price: 480,
-        image: './imagemenu/pepperoni.jpg',
+        image: './imagemenu/pepperoni.webp',
         category: 'pizza'
     },
     {
@@ -459,7 +459,7 @@ const menuData = [
         description: 'Пицца с нежным соусом фрикасе и курицей',
         descriptionKg: 'Фрикасе соусу жана тоок эти кошулган пицца',
         price: 520,
-        image: './imagemenu/fricase.jpg',
+        image: './imagemenu/fricase.avif',
         category: 'pizza'
     },
     {
@@ -469,7 +469,7 @@ const menuData = [
         description: 'Сытная пицца с мясом или острая с чили',
         descriptionKg: 'Эт кошулган тойумдуу пицца же чили менен ачуу',
         price: 550,
-        image: './imagemenu/meat_chili.jpg',
+        image: './imagemenu/meat_chili.webp',
         category: 'pizza'
     },
 
@@ -481,7 +481,7 @@ const menuData = [
         description: 'Картофель фри или шарики',
         descriptionKg: 'Фри картөшкө же шарики',
         price: 130,
-        image: './imagemenu/fries_balls.jpg',
+        image: './imagemenu/fries_balls.webp',
         category: 'potato'
     },
     {
@@ -491,7 +491,7 @@ const menuData = [
         description: 'Картофель по-деревенски с пряностями',
         descriptionKg: 'Айылдык картөшкө',
         price: 150,
-        image: './imagemenu/rustic_potatoes.jpg',
+        image: './imagemenu/rustic_potatoes.webp',
         category: 'potato'
     },
     {
@@ -501,12 +501,11 @@ const menuData = [
         description: 'Соусы: Сырный, Чесночный, Барбекю, Кетчуп',
         descriptionKg: 'Соустар: Сырный, Чесночный, Барбекю, Кетчуп',
         price: 30,
-        image: './imagemenu/sauces.jpg',
+        image: './imagemenu/sauces.avif',
         category: 'potato'
     },
 
     // ==================== СОБЕРИ СВОЮ ЛАПШУ (WOK) ====================
-    // Основа
     {
         id: 44,
         name: 'Основа: Соба',
@@ -534,7 +533,7 @@ const menuData = [
         description: 'Яичная лапша рамен',
         descriptionKg: 'Жумуртка кесме рамен',
         price: 160,
-        image: './imagemenu/ramen.jpg',
+        image: './imagemenu/ramen.avif',
         category: 'wok'
     },
     {
@@ -544,7 +543,7 @@ const menuData = [
         description: 'Стеклянная лапша фунчоза',
         descriptionKg: 'Айнек кесме фунчоза',
         price: 180,
-        image: './imagemenu/funchoza.jpg',
+        image: './imagemenu/funchoza.webp',
         category: 'wok'
     },
     // Наполнитель
@@ -570,7 +569,7 @@ const menuData = [
         description: 'Овощной наполнитель',
         descriptionKg: 'Жашылча кошумчасы',
         price: 30,
-        image: './imagemenu/veg_filler.jpg',
+        image: './imagemenu/veg_filler.png',
         category: 'wok'
     },
     // Соус
@@ -581,7 +580,7 @@ const menuData = [
         description: 'Соус терияки',
         descriptionKg: 'Терияки соусу',
         price: 50,
-        image: './imagemenu/teriyaki.jpg',
+        image: './imagemenu/teriyaki.avif',
         category: 'wok'
     },
     {
@@ -591,7 +590,7 @@ const menuData = [
         description: 'Сливочный соус',
         descriptionKg: 'Сливочный соус',
         price: 50,
-        image: './imagemenu/creamy.jpg',
+        image: './imagemenu/creamy.avif',
         category: 'wok'
     },
     {
@@ -623,7 +622,7 @@ const menuData = [
         description: 'Острый суп Том Ям с креветками',
         descriptionKg: 'Креветка кошулган ачуу Том Ям шорпосу',
         price: 420,
-        image: './imagemenu/tom_yam_shrimp.jpg',
+        image: './imagemenu/tom_yam_shrimp.avif ',
         category: 'soups'
     },
     {
@@ -633,7 +632,7 @@ const menuData = [
         description: 'Острый суп Том Ям с курицей',
         descriptionKg: 'Тоок эти кошулган ачуу Том Ям шорпосу',
         price: 350,
-        image: './imagemenu/tom_yam_chicken.jpg',
+        image: './imagemenu/tom_yam_chicken.avif',
         category: 'soups'
     },
 
@@ -661,7 +660,7 @@ const menuData = [
             { name: 'M', price: 240 },
             { name: 'L', price: 290 }
         ],
-        image: './imagemenu/oreo_bubble.jpg',
+        image: './imagemenu/oreo_bubble.webp',
         category: 'bubble_tea'
     },
     {
@@ -687,7 +686,7 @@ const menuData = [
             { name: 'M', price: 230 },
             { name: 'L', price: 280 }
         ],
-        image: './imagemenu/twix_bubble.jpg',
+        image: './imagemenu/twix_bubble.webp',
         category: 'bubble_tea'
     },
     {
@@ -700,7 +699,7 @@ const menuData = [
             { name: 'M', price: 250 },
             { name: 'L', price: 300 }
         ],
-        image: './imagemenu/pistachio_matcha.jpg',
+        image: './imagemenu/pistachio_matcha.webp',
         category: 'bubble_tea'
     },
     {
@@ -713,7 +712,7 @@ const menuData = [
             { name: 'M', price: 250 },
             { name: 'L', price: 300 }
         ],
-        image: './imagemenu/matcha_oreo.jpg',
+        image: './imagemenu/matcha_oreo.jpeg',
         category: 'bubble_tea'
     },
     {
@@ -739,7 +738,7 @@ const menuData = [
             { name: 'M', price: 250 },
             { name: 'L', price: 300 }
         ],
-        image: './imagemenu/matcha_strawberry.jpg',
+        image: './imagemenu/matcha_strawberry.jpeg',
         category: 'bubble_tea'
     },
     {
@@ -765,7 +764,7 @@ const menuData = [
             { name: 'M', price: 250 },
             { name: 'L', price: 300 }
         ],
-        image: './imagemenu/coffee_chocolate.jpg',
+        image: './imagemenu/coffee_chocolate.jpeg',
         category: 'bubble_tea'
     },
     {
@@ -778,7 +777,7 @@ const menuData = [
             { name: 'M', price: 240 },
             { name: 'L', price: 290 }
         ],
-        image: './imagemenu/taro.jpg',
+        image: './imagemenu/taro.webp',
         category: 'bubble_tea'
     },
     {
@@ -791,7 +790,7 @@ const menuData = [
             { name: 'M', price: 240 },
             { name: 'L', price: 290 }
         ],
-        image: './imagemenu/bubble_mango.jpg',
+        image: './imagemenu/bubble_mango.webp',
         category: 'bubble_tea'
     },
     {
@@ -804,7 +803,7 @@ const menuData = [
             { name: 'M', price: 240 },
             { name: 'L', price: 290 }
         ],
-        image: './imagemenu/taro_strawberry.jpg',
+        image: './imagemenu/taro_strawberry.webp',
         category: 'bubble_tea'
     },
     {
@@ -817,7 +816,7 @@ const menuData = [
             { name: 'M', price: 240 },
             { name: 'L', price: 290 }
         ],
-        image: './imagemenu/brown_sugar.jpg',
+        image: './imagemenu/brown_sugar.webp',
         category: 'bubble_tea'
     },
     {
@@ -830,7 +829,7 @@ const menuData = [
             { name: 'M', price: 240 },
             { name: 'L', price: 290 }
         ],
-        image: './imagemenu/heavenly_tea.jpg',
+        image: './imagemenu/heavenly_tea.png',
         category: 'bubble_tea'
     },
 
@@ -852,7 +851,7 @@ const menuData = [
         description: 'Холодный чай с манго и маракуйей',
         descriptionKg: 'Манго жана маракуйя кошулган муздак чай',
         price: 230,
-        image: './imagemenu/mango_passion.jpg',
+        image: './imagemenu/mango_passion.webp',
         category: 'ice_tea'
     },
     {
@@ -882,7 +881,7 @@ const menuData = [
         description: 'Холодный чай с виноградом и черникой',
         descriptionKg: 'Виноград жана черника кошулган муздак чай',
         price: 280,
-        image: './imagemenu/grape_blueberry.jpg',
+        image: './imagemenu/grape_blueberry.avif',
         category: 'ice_tea'
     },
     {
@@ -892,7 +891,7 @@ const menuData = [
         description: 'Ягодный холодный чай',
         descriptionKg: 'Жемиш муздак чай',
         price: 280,
-        image: './imagemenu/berry.jpg',
+        image: './imagemenu/berry.avif',
         category: 'ice_tea'
     },
     {
@@ -902,7 +901,7 @@ const menuData = [
         description: 'Холодный чай с манго и персиком',
         descriptionKg: 'Манго жана персик кошулган муздак чай',
         price: 280,
-        image: './imagemenu/mango_peach.jpg',
+        image: './imagemenu/mango_peach.webp',
         category: 'ice_tea'
     },
 
