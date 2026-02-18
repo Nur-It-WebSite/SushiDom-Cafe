@@ -1405,7 +1405,11 @@ const translations = {
         'about-text-1': 'SushiDom — место в Кара-Куле с качественными роллами, сетами и напитками. Мы используем свежие продукты.',
         'about-text-2': 'Здесь нет официантов — оформляйте заказ через сайт для самовывоза или доставки.',
         'about-text-3': 'SushiDom — вкусно, удобно и быстро.',
-        'menu-title': 'Меню',
+        'welcome-title': 'Добро пожаловать в <em>SushiDom</em>',
+        'welcome-subtitle': 'Свежие роллы, сеты и напитки с доставкой и самовывозом. Закажите прямо сейчас.',
+        'welcome-badge': '🍣 Кара-Куль · Свежие роллы',
+        'menu-title': 'Наше <span>меню</span>',
+        'view-menu': 'Посмотреть меню',
         'contact-title': 'Контакты',
         'contact-location': 'Кара-Куль',
         'contact-hours': '10:00 - 22:00, без выходных',
@@ -1430,6 +1434,9 @@ const translations = {
         'filter-all': 'Все',
         'filter-first': 'Первые блюда',
         'filter-fastfood': 'Фаст Фуд',
+        'filter-rolls': 'Суши и Роллы',
+        'filter-sets': 'Сеты',
+        'filter-wok': 'WOK (Соба)',
         'filter-drinks': 'Напитки',
         'filter-second': 'Вторые блюда',
         'filter-special': 'Заказные',
@@ -1463,7 +1470,11 @@ const translations = {
         'about-text-1': 'SushiDom — Кара-Көлдөгү ролл жана сеттердин даамдуу менюсу. Биз таза жана свежий азыктарды колдонобуз.',
         'about-text-2': 'Бул жерде официанттар жок — заказды сайт аркылуу самовывоз же жеткирүү үчүн берсеңиз болот.',
         'about-text-3': 'SushiDom — даамдуу жана ыңгайлуу.',
-        'menu-title': 'Меню',
+        'welcome-title': '<em>SushiDom</em> кафесине кош келиңиз',
+        'welcome-subtitle': 'Жаңы роллдор, сеттер жана суусундуктар жеткирүү жана өз алдынча алуу менен. Азыр заказ бериңиз.',
+        'welcome-badge': '🍣 Кара-Куль · Жаңы роллдор',
+        'menu-title': 'Биздин <span>аш тизмек</span>',
+        'view-menu': 'Меню көрүү',
         'contact-title': 'Байланыш',
         'contact-location': 'Кара-Көл',
         'contact-hours': '10:00 - 22:00, дем алыш жок',
@@ -1488,6 +1499,9 @@ const translations = {
         'filter-all': 'Баары',
         'filter-first': 'Биринчи тамактар',
         'filter-fastfood': 'Фаст Фуд',
+        'filter-rolls': 'Суши жана Роллы',
+        'filter-sets': 'Сеттер',
+        'filter-wok': 'WOK (Соба)',
         'filter-drinks': 'Суусундуктар',
         'filter-second': 'Экинчи тамактар',
         'filter-special': 'Заказдык',
@@ -1771,27 +1785,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     initOrderFormValidation();
     // Init order type modal (только навешиваем обработчики, не показываем сразу)
     initOrderTypeModal();
-    // Если стол передан через параметр ?table=, сразу выбираем его.
-    // В этом случае окно "Как вы хотите заказать?" не показываем вообще.
-    const handledByUrl = initTableFromUrl();
-    // Если стол НЕ передан в URL, показываем модалку выбора типа заказа
-    if (!handledByUrl) {
-        // Если в localStorage сохранён официант/стол — восстановим баннер
-        try {
-            const savedWaiter = localStorage.getItem('currentWaiter');
-            if (savedWaiter && !currentWaiter) {
-                currentWaiter = JSON.parse(savedWaiter);
-                // Отложенно показываем баннер
-                setTimeout(() => { notifyAssignedWaiter(); }, 300);
-            }
-        } catch (e) { }
-
-        const orderTypeModal = document.getElementById('orderTypeModal');
-        if (orderTypeModal) {
-            orderTypeModal.classList.add('active');
-            enableModalLock();
-        }
-    }
 });
 
 // Set selected class on payment option labels for clear visual state
@@ -2110,7 +2103,7 @@ function initTableFromUrl() {
         if (!tableParam) return false;
 
         const t = parseInt(tableParam, 10);
-        if (!isNaN(t) && t >= 1 && t <= 11) {
+        if (!isNaN(t) && t >= 3 && t <= 11) {
             tableNumber = t;
             // Устанавливаем режим заказа "в кафе"
             orderType = 'cafe';
@@ -2348,7 +2341,7 @@ function translatePage() {
         const txt = translations[currentLang] && translations[currentLang][key];
         if (txt) {
             // основной текст
-            el.textContent = txt;
+            el.innerHTML = txt;
             // placeholder, title, aria-label, value
             if (el.hasAttribute('placeholder')) el.setAttribute('placeholder', txt);
             if (el.hasAttribute('title')) el.setAttribute('title', txt);
@@ -4015,3 +4008,30 @@ window.showDishDetails = showDishDetails;
 window.filterByCategory = filterByCategory;
 window.getAllReviews = getAllReviews;
 window.createReviewCard = createReviewCard;
+
+// Показываем модалку выбора типа заказа сразу, если нужно
+(function () {
+    // Init order type modal (только навешиваем обработчики, не показываем сразу)
+    initOrderTypeModal();
+    // Если стол передан через параметр ?table=, сразу выбираем его.
+    // В этом случае окно "Как вы хотите заказать?" не показываем вообще.
+    const handledByUrl = initTableFromUrl();
+    // Если стол НЕ передан в URL, показываем модалку выбора типа заказа
+    if (!handledByUrl) {
+        // Если в localStorage сохранён официант/стол — восстановим баннер
+        try {
+            const savedWaiter = localStorage.getItem('currentWaiter');
+            if (savedWaiter && !currentWaiter) {
+                currentWaiter = JSON.parse(savedWaiter);
+                // Отложенно показываем баннер
+                setTimeout(() => { notifyAssignedWaiter(); }, 300);
+            }
+        } catch (e) { }
+
+        const orderTypeModal = document.getElementById('orderTypeModal');
+        if (orderTypeModal) {
+            orderTypeModal.classList.add('active');
+            enableModalLock();
+        }
+    }
+})();
