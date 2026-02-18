@@ -1597,7 +1597,7 @@ translations.ru['order_error'] = '❌ Произошла ошибка: {msg}. П
 translations.kg['order_error'] = '❌ Ката кетти: {msg}. Сураныч, кайра аракет кылыңыз.';
 // CTA / header small keys
 translations.ru['view-menu'] = 'Посмотреть меню';
-translations.kg['view-menu'] = 'Менюну караңыз';
+translations.kg['view-menu'] = 'Аш тизмек ';
 // Payment translations
 translations.ru['payment-method-label'] = 'Способ оплаты';
 translations.kg['payment-method-label'] = 'Төлөө ыкмасы';
