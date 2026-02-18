@@ -429,7 +429,7 @@ const menuData = [
         description: 'Классическая пицца с томатным соусом и моцареллой',
         descriptionKg: 'Классикалык помидор соусу жана моцарелла менен',
         price: 450,
-        image:'./imagemenu/margarita.jpeg',
+        image: './imagemenu/margarita.jpeg',
         category: 'pizza'
     },
     {
@@ -2092,6 +2092,13 @@ function initEventListeners() {
             if (scrollPosition >= menuTop && scrollPosition < menuBottom) {
                 bottomNavMenu?.classList.add('active');
                 bottomNavCart?.classList.remove('active');
+
+                // Если пользователь находится в зоне меню — показываем шапку
+                const headerEl = document.querySelector('.header');
+                if (headerEl) {
+                    headerEl.classList.remove('hidden');
+                    headerEl.classList.add('visible');
+                }
             } else {
                 bottomNavMenu?.classList.remove('active');
             }
