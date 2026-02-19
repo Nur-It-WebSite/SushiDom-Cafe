@@ -428,7 +428,10 @@ const menuData = [
         nameKg: 'Маргарита',
         description: 'Классическая пицца с томатным соусом и моцареллой',
         descriptionKg: 'Классикалык помидор соусу жана моцарелла менен',
-        price: 450,
+        variants: [
+            { name: '30 см', price: 450 },
+            { name: '40 см', price: 550 }
+        ],
         image: './imagemenu/margarita.jpeg',
         category: 'pizza'
     },
@@ -438,7 +441,10 @@ const menuData = [
         nameKg: 'Пепперони / Балдарга',
         description: 'Пицца с пепперони или детская',
         descriptionKg: 'Пепперони же балдар пиццасы',
-        price: 480,
+        variants: [
+            { name: '30 см', price: 480 },
+            { name: '40 см', price: 580 }
+        ],
         image: './imagemenu/pepperoni.webp',
         category: 'pizza'
     },
@@ -448,7 +454,10 @@ const menuData = [
         nameKg: 'Козу карын менен тоок',
         description: 'Сочная пицца с куриным филе и шампиньонами',
         descriptionKg: 'Тоок филеси жана шампиньон кошулган ширелүү пицца',
-        price: 500,
+        variants: [
+            { name: '30 см', price: 500 },
+            { name: '40 см', price: 600 }
+        ],
         image: './imagemenu/chicken_mushrooms.jpg',
         category: 'pizza'
     },
@@ -458,7 +467,10 @@ const menuData = [
         nameKg: 'Фрикасе',
         description: 'Пицца с нежным соусом фрикасе и курицей',
         descriptionKg: 'Фрикасе соусу жана тоок эти кошулган пицца',
-        price: 520,
+        variants: [
+            { name: '30 см', price: 520 },
+            { name: '40 см', price: 620 }
+        ],
         image: './imagemenu/fricase.avif',
         category: 'pizza'
     },
@@ -468,7 +480,10 @@ const menuData = [
         nameKg: 'Эттүү / Чили',
         description: 'Сытная пицца с мясом или острая с чили',
         descriptionKg: 'Эт кошулган тойумдуу пицца же чили менен ачуу',
-        price: 550,
+        variants: [
+            { name: '30 см', price: 550 },
+            { name: '40 см', price: 650 }
+        ],
         image: './imagemenu/meat_chili.webp',
         category: 'pizza'
     },
@@ -500,7 +515,12 @@ const menuData = [
         nameKg: 'Соустар',
         description: 'Соусы: Сырный, Чесночный, Барбекю, Кетчуп',
         descriptionKg: 'Соустар: Сырный, Чесночный, Барбекю, Кетчуп',
-        price: 30,
+        variants: [
+            { name: 'Сырный', price: 30 },
+            { name: 'Чесночный', price: 30 },
+            { name: 'Барбекю', price: 30 },
+            { name: 'Кетчуп', price: 30 }
+        ],
         image: './imagemenu/sauces.avif',
         category: 'potato'
     },
